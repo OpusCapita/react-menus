@@ -49,6 +49,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "babelrc-rollup": "3.0.0",
+    "condition-circle": "^1.5.0",
     "enzyme": "^2.8.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "14.1.0",
@@ -74,5 +75,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "react": "15.4.2",
     "react-bootstrap": "^0.30.8"
+  },
+  "release": {
+    "verifyConditions": "condition-circle"
   }
 }
