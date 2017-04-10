@@ -6,7 +6,7 @@
   "module": "lib/ocbesbn-react-components.js",
   "jsnext:main": "lib/ocbesbn-react-components.js",
   "scripts": {
-    "prebuild": "rimraf lib && npm run lint",
+    "prebuild": "rimraf lib",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "lint": "eslint src",
