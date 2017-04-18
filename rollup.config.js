@@ -1,13 +1,15 @@
 import babel from 'rollup-plugin-babel';
 import cjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
+import url from 'rollup-plugin-url';
 
-let pkg = require('./package.json');
-let external = Object.keys(pkg.dependencies);
+const pkg = require('./package.json');
+const external = Object.keys(pkg.dependencies);
 
 export default {
   entry: 'src/index.js',
   plugins: [
+    url(),
     babel({
       babelrc: false,
       exclude: 'node_modules/**',

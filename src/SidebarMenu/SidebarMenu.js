@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import logo from './oc-logo-white.svg';
 
 class SidebarMenu extends Component {
   static defaultProps = {
-    isBuyer: true
+    isBuyer: true,
+    logo: logo
   }
 
   static propTypes = {
@@ -81,9 +83,9 @@ class SidebarMenu extends Component {
     return (
       <section
         className="sidebar"
-        style={Object.assign({ minHeight: '100vh', position: 'static', zIndex: 3 }, style)}
+        style={Object.assign({ minHeight: '100vh', position: 'fixed', zIndex: 3 }, style)}
       >
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default" style={{ border: 0 }}>
           <div className="nav-background" />
           <div className="navbar-header hidden-md">
             <a className="navbar-brand visible-lg" href="http://www.opuscapita.com/">
