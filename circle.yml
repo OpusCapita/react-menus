@@ -18,4 +18,8 @@ deployment:
   master:
     branch: master
     commands:
-      - yarn run semantic-release
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - git config --global user.name "CI"
+      - git config --global user.email "ci@opuscapita.com"
+      - npm run release
+

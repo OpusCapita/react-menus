@@ -1,6 +1,6 @@
 {
   "name": "ocbesbn-react-components",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.1",
   "description": "OpusCapita React components",
   "main": "lib/ocbesbn-react-components.js",
   "module": "lib/ocbesbn-react-components.js",
@@ -17,7 +17,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "release": "release-it --non-interactive --npm.publish --github.release --force --src.commitMessage=\"Release %s [ci skip]\""
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,6 @@
     "babel-preset-stage-0": "6.24.1",
     "babel-register": "6.24.1",
     "babelrc-rollup": "3.0.0",
-    "condition-circle": "1.5.0",
     "enzyme": "2.8.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
@@ -61,6 +60,7 @@
     "in-publish": "2.0.0",
     "istanbul": "0.4.5",
     "react": "15.4.2",
+    "release-it": "2.7.1",
     "rimraf": "2.6.1",
     "rollup": "0.41.6",
     "rollup-plugin-babel": "2.7.1",
@@ -68,15 +68,11 @@
     "rollup-plugin-istanbul": "1.1.0",
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-url": "1.1.0",
-    "rollup-watch": "3.2.2",
-    "semantic-release": "6.3.2"
+    "rollup-watch": "3.2.2"
   },
   "dependencies": {
     "react": "15.4.2",
     "react-bootstrap": "0.30.9",
     "react-dom": "15.4.2"
-  },
-  "release": {
-    "verifyConditions": "condition-circle"
   }
 }
