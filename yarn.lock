@@ -5371,9 +5371,9 @@ react-addons-create-fragment@^15.3.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-bootstrap@0.30.8:
-  version "0.30.8"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.30.8.tgz#4ceca8e138ce2351228c4a58d59db00c003ca9c0"
+react-bootstrap@0.30.9:
+  version "0.30.9"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.30.9.tgz#acdb20119fac189fd6546257cb741f463d4cd965"
   dependencies:
     babel-runtime "^6.11.6"
     classnames "^2.2.5"
