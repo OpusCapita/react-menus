@@ -8,7 +8,7 @@ class SidebarMenu extends Component {
   }
 
   static propTypes = {
-    isBuyer: React.PropTypes.bool.isRequired,
+    isBuyer: React.PropTypes.string.isRequired,
     style: React.PropTypes.object,
     logo: React.PropTypes.string,
   }
@@ -92,8 +92,8 @@ class SidebarMenu extends Component {
           <ul className="nav navbar-nav">
             <li className={`${this.state.activeMainMenuName === 'Home' && ' active' || ''}`}>
               <a
-                href="#"
-                onClick={this.handleMenuItemClick.bind(this, 'dashboard', 'Home')}
+                href="/bnp/dashboard"
+                onClick={this.handleMenuItemClick.bind(this, '/bnp/dashboard', 'Home')}
               >
                 <span className="oci oci-store" />
                 Home
@@ -132,7 +132,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/orderInspect"
-                      onClick={this.handleMenuItemClick.bind(this, 'orderInspect', 'Orders', 'OrderInspect')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/orderInspect', 'Orders', 'OrderInspect')}
                     >
                       Order Inspect
                     </a>
@@ -148,7 +148,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/orderConfirmation"
-                      onClick={this.handleMenuItemClick.bind(this, 'orderConfirmation', 'Orders', 'OrderCon')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/orderConfirmation', 'Orders', 'OrderCon')}
                     >
                       Order Confirmation <span className="badge">3</span>
                     </a>
@@ -163,7 +163,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/orderHistory"
-                      onClick={this.handleMenuItemClick.bind(this, 'orderHistory', 'Orders', 'OrderHistory')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/orderHistory', 'Orders', 'OrderHistory')}
                     >
                       Order History
                     </a>
@@ -179,7 +179,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/poDownload"
-                      onClick={this.handleMenuItemClick.bind(this, 'poDownload', 'Orders', 'PO Download')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/poDownload', 'Orders', 'PO Download')}
                     >
                       PO Download
                     </a>
@@ -191,7 +191,7 @@ class SidebarMenu extends Component {
             {
               isBuyer &&
               <li className={`${this.state.activeMainMenuName === 'ShippingNotice' && ' active' || ''}`}>
-                <a href="/shippingNotice" onClick={this.handleMenuItemClick.bind(this, 'shippingNotice', 'ShippingNotice')}>
+                <a href="/bnp/shippingNotice" onClick={this.handleMenuItemClick.bind(this, '/bnp/shippingNotice', 'ShippingNotice')}>
                   <span className="oci oci-texts" />
                   Shipping Notice
                 </a>
@@ -230,7 +230,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/invoiceApproval"
-                      onClick={this.handleMenuItemClick.bind(this, 'invoiceApproval', 'Invoice', 'Approval')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/invoiceApproval', 'Invoice', 'Approval')}
                     >
                       Approval <span className="badge">7</span>
                     </a>
@@ -246,7 +246,7 @@ class SidebarMenu extends Component {
                 >
                   <a
                     href="/bnp/invoiceInspect"
-                    onClick={this.handleMenuItemClick.bind(this, 'invoiceInspect', 'Invoice', 'Inspect')}
+                    onClick={this.handleMenuItemClick.bind(this, '/bnp/invoiceInspect', 'Invoice', 'Inspect')}
                   >
                     Inspect
                   </a>
@@ -263,7 +263,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/disputeManagement"
-                      onClick={this.handleMenuItemClick.bind(this, 'disputeManagement', 'Invoice', 'DisputeManagement')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/disputeManagement', 'Invoice', 'DisputeManagement')}
                     >
                       Dispute Management
                     </a>
@@ -281,7 +281,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/invoice/create"
-                      onClick={this.handleMenuItemClick.bind(this, 'invoice/create', 'Invoice', 'Create New')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/invoice/create', 'Invoice', 'Create New')}
                     >
                       Create New
                     </a>
@@ -291,7 +291,7 @@ class SidebarMenu extends Component {
             </li>
 
             <li className={`${this.state.activeMainMenuName === 'OtherDocs' && ' active' || ''}`}>
-              <a href="/otherDocuments" onClick={this.handleMenuItemClick.bind(this, 'otherDocuments', 'OtherDocs')}>
+              <a href="/bnp/otherDocuments" onClick={this.handleMenuItemClick.bind(this, '/bnp/otherDocuments', 'OtherDocs')}>
                 <span className="oci oci-docu" />
                 Other Docs
               </a>
@@ -300,7 +300,7 @@ class SidebarMenu extends Component {
             {
               isSupplier &&
               <li className={`${this.state.activeMainMenuName === 'Products' && ' active' || ''}`}>
-                <a href="/bnp/products" onClick={this.handleMenuItemClick.bind(this, 'products', 'Products')}>
+                <a href="/bnp/products" onClick={this.handleMenuItemClick.bind(this, '/bnp/products', 'Products')}>
                   <span className="oci oci-products" />
                   Products
                 </a>
@@ -339,7 +339,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/createRfQ"
-                      onClick={this.handleMenuItemClick.bind(this, 'createRfQ', 'RfQ', 'CreateRfQ')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/createRfQ', 'RfQ', 'CreateRfQ')}
                     >
                       Create RfQ
                     </a>
@@ -357,7 +357,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/inspectRfQ"
-                      onClick={this.handleMenuItemClick.bind(this, 'inspectRfQ', 'RfQ', 'InspectRfQ')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/inspectRfQ', 'RfQ', 'InspectRfQ')}
                     >
                       Inspect RfQ
                     </a>
@@ -375,7 +375,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/viewsRfQs"
-                      onClick={this.handleMenuItemClick.bind(this, 'viewRfQs', 'RfQ', 'ViewRfQs')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/viewRfQs', 'RfQ', 'ViewRfQs')}
                     >
                       View RfQs
                     </a>
@@ -416,7 +416,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/supplierDirectory"
-                      onClick={this.handleMenuItemClick.bind(this, 'supplierDirectory', 'Suppliers', 'Dir')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/supplierDirectory', 'Suppliers', 'Dir')}
                     >
                       Supplier Directory
                     </a>
@@ -431,7 +431,7 @@ class SidebarMenu extends Component {
                   >
                     <a
                       href="/bnp/supplierRating"
-                      onClick={this.handleMenuItemClick.bind(this, 'supplierRating', 'Suppliers', 'Rating')}
+                      onClick={this.handleMenuItemClick.bind(this, '/bnp/supplierRating', 'Suppliers', 'Rating')}
                     >
                       Supplier Rating
                     </a>
@@ -445,23 +445,47 @@ class SidebarMenu extends Component {
                     }`}
                   >
                     <a
-                      href={`/onboarding/dashboard`}
+                      href="/onboarding/dashboard"
+                      onClick={this.handleMenuItemClick.bind(this, '/onboarding/dashboard', 'Suppliers', 'Dashboard')}
                     >
                       Onboarding Dashboard
                     </a>
                   </li>
-                  <li>
-                    <a href={`/onboarding/`}>
+                  <li
+                    className={`${
+                    this.state.activeMainMenuName === 'Suppliers' &&
+                    this.state.activeSubMenuName === 'Campaigns' &&
+                    ' active' ||
+                    ''
+                      }`}
+                  >
+                    <a
+                      href="/onboarding"
+                      onClick={this.handleMenuItemClick.bind(this, '/onboarding', 'Suppliers', 'Campaigns')}
+                    >
                       Onboarding Campaigns
                     </a>
                   </li>
-                  <li>
-                    <a href={`/onboarding/create`}>
+                  <li
+                    className={`${
+                    this.state.activeMainMenuName === 'Suppliers' &&
+                    this.state.activeSubMenuName === 'Campaign' &&
+                    ' active' ||
+                    ''
+                      }`}
+                  >
+                    <a
+                      href="/onboarding/create"
+                      onClick={this.handleMenuItemClick.bind(this, '/onboarding/create', 'Suppliers', 'Campaign')}
+                    >
                       Create Onboarding Campaign
                     </a>
                   </li>
                   <li>
-                    <a href={`/onboarding/public/ncc_onboard`}>
+                    <a
+                      href="/onboarding/public/ncc_onboard"
+                      onClick={this.handleMenuItemClick.bind(this, '/onboarding/public/ncc_onboard', 'Company', 'Profile')}
+                    >
                       View Onboarding Page
                     </a>
                   </li>
@@ -499,7 +523,7 @@ class SidebarMenu extends Component {
                 >
                   <a
                     href="/bnp/supplierInformation"
-                    onClick={this.handleMenuItemClick.bind(this, 'supplierInformation', 'Company', 'Profile')}
+                    onClick={this.handleMenuItemClick.bind(this, '/bnp/supplierInformation', 'Company', 'Profile')}
                   >
                     Profile
                   </a>
@@ -514,7 +538,7 @@ class SidebarMenu extends Component {
                 >
                   <a
                     href="/bnp/serviceConfiguration"
-                    onClick={this.handleMenuItemClick.bind(this, 'serviceConfigFlow', 'Company', 'ServiceConfig')}
+                    onClick={this.handleMenuItemClick.bind(this, '/bnp/serviceConfigFlow', 'Company', 'ServiceConfig')}
                   >
                     Service Configuration
                   </a>
@@ -529,7 +553,7 @@ class SidebarMenu extends Component {
                 >
                   <a
                     href="/bnp/companyInformation"
-                    onClick={this.handleMenuItemClick.bind(this, 'companyInformation', 'Company', 'CompanyInfo')}
+                    onClick={this.handleMenuItemClick.bind(this, '/bnp/companyInformation', 'Company', 'CompanyInfo')}
                   >
                     Company Information
                   </a>
@@ -538,7 +562,7 @@ class SidebarMenu extends Component {
             </li>
 
             <li className={`${this.state.activeMainMenuName === 'Settings' && ' active' || ''}`}>
-              <a href="/settings" onClick={this.handleMenuItemClick.bind(this, 'settings', 'Settings')}>
+              <a href="/bnp/settings" onClick={this.handleMenuItemClick.bind(this, '/bnp/settings', 'Settings')}>
                 <span className="oci oci-admin" />
                 Settings
               </a>
