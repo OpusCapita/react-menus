@@ -8,7 +8,7 @@ class SidebarMenu extends Component {
   }
 
   static propTypes = {
-    isBuyer: React.PropTypes.string.isRequired,
+    isBuyer: React.PropTypes.bool.isRequired,
     style: React.PropTypes.object,
     logo: React.PropTypes.string,
   }
@@ -538,7 +538,7 @@ class SidebarMenu extends Component {
                 >
                   <a
                     href="/bnp/serviceConfiguration"
-                    onClick={this.handleMenuItemClick.bind(this, '/bnp/serviceConfigFlow', 'Company', 'ServiceConfig')}
+                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send', 'Company', 'ServiceConfig')}
                   >
                     Service Configuration
                   </a>
