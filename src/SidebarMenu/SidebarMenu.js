@@ -537,7 +537,7 @@ class SidebarMenu extends Component {
                   }`}
                 >
                   <a
-                    href="/bnp/serviceConfiguration"
+                    href="/einvoice-send"
                     onClick={this.handleMenuItemClick.bind(this, '/einvoice-send', 'Company', 'ServiceConfig')}
                   >
                     Service Configuration
