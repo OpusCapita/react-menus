@@ -1,5 +1,6 @@
 import React from 'react';
 import { MenuItem, Dropdown, Glyphicon } from 'react-bootstrap';
+import locales from './i18n/locales.js'
 
 class HeaderMenu extends React.Component {
   static propTypes = {
@@ -26,6 +27,7 @@ class HeaderMenu extends React.Component {
       activeSubMenuName: this.props.activeSubMenuName,
       activeLanguage: 'English'
     };
+    let i18n;
   }
 
    static contextTypes = {
@@ -42,12 +44,26 @@ class HeaderMenu extends React.Component {
     })
     if(this.context.setLocale != null)
       this.context.setLocale(locale)
+    this.context.locale = locale;
+  }
+
+  componentWillReceiveProps(nextProps, nextContext){
+    console.log(nextContext);
+    if(this.i18n && this.i18n.locale && nextContext.i18n.locale != this.i18n.locale){
+      this.i18n.locale = nextContext.i18n.locale;
+      this.setState({
+       ...this.state
+      });
+    }
   }
 
   toggleDropDown() {
     const css = (this.state.showHideDropdown === "dropdown open") ? "dropdown" : "dropdown open";
-
     this.setState({ "showHideDropdown": css });
+  }
+
+  componentWillMount(){
+    this.i18n = this.context.i18n.register('HeaderMenu', locales);
   }
 
   render() {
@@ -81,7 +97,7 @@ class HeaderMenu extends React.Component {
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
-                  Language
+                  {this.i18n.getMessage('HeaderMenu.language')}
                 </li>
                 <li className="divider" />
                 <li>
@@ -95,7 +111,7 @@ class HeaderMenu extends React.Component {
                   <a className="hidden" href="#">Change Assignment</a>
                 </li>
                 <li>
-                  <a href="/auth/logout">Logout</a>
+                  <a href="/auth/logout">{this.i18n.getMessage('HeaderMenu.logout')}</a>
                 </li>
               </ul>
             </li>

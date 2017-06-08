@@ -15,7 +15,7 @@ let products = {};
 products.label = 'Produktdaten';
 
 let otherDocs = {};
-otherDocs.label = 'Andere Dokumente;
+otherDocs.label = 'Andere Dokumente';
 
 let invoice = {};
 invoice.label = 'Rechnungen';
