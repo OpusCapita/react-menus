@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import logo from './oc-logo-white.svg';
+import locales from './i18n/locales.js'
 
 class SidebarMenu extends Component {
   static defaultProps = {
     isBuyer: true,
-    logo: logo
   }
 
   static propTypes = {
     isBuyer: React.PropTypes.bool.isRequired,
-    style: React.PropTypes.object,
-    logo: React.PropTypes.string,
+    style: React.PropTypes.object
   }
 
   constructor(props) {
@@ -24,8 +22,16 @@ class SidebarMenu extends Component {
     };
   }
 
+  static contextTypes = {
+    i18n: React.PropTypes.object,
+    formatPatterns: React.PropTypes.object,
+    dateTimePattern: React.PropTypes.string,
+    setLocale: React.PropTypes.func
+  }
+
   componentDidMount() {
     document.body.addEventListener('click', this.hideMenu, false);
+    this.context.i18n.register('SidebarMenu', locales);
   }
 
   componentWillUnmount() {
@@ -74,9 +80,9 @@ class SidebarMenu extends Component {
   }
 
   render() {
-    const { isBuyer, logo, style } = this.props;
+    const { isBuyer, style } = this.props;
     const isSupplier = !isBuyer;
-
+    console.log(this.context.i18n);
     return (
       <section
         className="sidebar"
@@ -86,7 +92,7 @@ class SidebarMenu extends Component {
           <div className="nav-background" />
           <div className="navbar-header hidden-md">
             <a className="navbar-brand visible-lg" href="http://www.opuscapita.com/">
-              <img src={logo} style={{ height: '1.4em' }} />
+              <img src="" style={{ height: '1.4em' }} />
             </a>
           </div>
           <ul className="nav navbar-nav">
@@ -96,7 +102,7 @@ class SidebarMenu extends Component {
                 onClick={this.handleMenuItemClick.bind(this, '/bnp/dashboard', 'Home')}
               >
                 <span className="oci oci-store" />
-                Home
+                {this.context.i18n.getMessage('SidebarMenu.home')}
               </a>
             </li>
 

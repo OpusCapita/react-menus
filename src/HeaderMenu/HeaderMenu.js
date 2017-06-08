@@ -1,4 +1,5 @@
 import React from 'react';
+import { MenuItem, Dropdown, Glyphicon } from 'react-bootstrap';
 
 class HeaderMenu extends React.Component {
   static propTypes = {
@@ -22,8 +23,25 @@ class HeaderMenu extends React.Component {
       currentOpenMenuName: null,
       showHideDropdown: "dropdown",
       activeMainMenuName: this.props.activeMainMenuName,
-      activeSubMenuName: this.props.activeSubMenuName
+      activeSubMenuName: this.props.activeSubMenuName,
+      activeLanguage: 'English'
     };
+  }
+
+   static contextTypes = {
+    i18n: React.PropTypes.object,
+    formatPatterns: React.PropTypes.object,
+    dateTimePattern: React.PropTypes.string,
+    setLocale: React.PropTypes.func
+  }
+
+  onLanguageChange = (locale, activeLanguage) => {
+    this.setState({
+      ...this.state,
+      activeLanguage: activeLanguage
+    })
+    if(this.context.setLocale != null)
+      this.context.setLocale(locale)
   }
 
   toggleDropDown() {
@@ -35,7 +53,7 @@ class HeaderMenu extends React.Component {
   render() {
     const { showHideDropdown } = this.state;
     const { currentUserData } = this.props;
-
+    
     return (
       <div className="navbar navbar-default navbar-main-menu" style={{ paddingRight: '25px' }}>
         <div className="navbar-header pull-right">
@@ -62,9 +80,16 @@ class HeaderMenu extends React.Component {
                 <span className="glyphicon glyphicon-user" />
               </a>
               <ul className="dropdown-menu">
-                <li className="dropdown-header hidden">
+                <li className="dropdown-header">
                   Language
                 </li>
+                <li className="divider" />
+                <li>
+                  <a id="lanugage-de" onClick={this.onLanguageChange.bind('German', 'de')}>German</a>
+                </li> 
+                <li>
+                  <a id="lanugage-en" onClick={this.onLanguageChange.bind('English', 'en')}>English</a>
+                </li> 
                 <li className="divider" />
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
@@ -80,7 +105,6 @@ class HeaderMenu extends React.Component {
               </a>
             </li>
           </ul>
-
         </div>
       </div>
     )
