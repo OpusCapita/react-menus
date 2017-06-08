@@ -1,6 +1,6 @@
 export default {
   HeaderMenu: {
-    language: 'Lanuage',
+    language: 'Language',
     logout: 'Logout'  
   }
 }

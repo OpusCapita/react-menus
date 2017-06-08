@@ -1,32 +1,32 @@
 let settings = {};
-settings.label = 'Settings';
+settings.label = 'Einstellungen';
 
 let company = {};
-company.label = 'Company';
-company.profile = 'Profile';
-company.serviceConfiguration = 'Service Configuration';
-company.companyInformation = 'Company Information';
+company.label = 'Unternehmen';
+company.profile = 'Profil';
+company.serviceConfiguration = 'Service Konfiguration';
+company.companyInformation = 'Unternehmensinformation';
 
 let rfg = {};
-rfg.label = 'RfQ';
-rfg.viewRfQs = 'View RfQs';
+rfg.label = 'Ausschreibung';
+rfg.viewRfQs = 'Liste';
 
 let products = {};
-products.label = 'Products';
+products.label = 'Produktdaten';
 
 let otherDocs = {};
-otherDocs.label = 'Other Docs';
+otherDocs.label = 'Andere Dokumente;
 
 let invoice = {};
-invoice.label = 'Invoice';
-invoice.inspect = 'Inspect';
-invoice.createNew = 'Create New';
+invoice.label = 'Rechnungen';
+invoice.inspect = 'Liste';
+invoice.createNew = 'Erstellen';
 
 let orders = {};
-orders.label = 'Orders';
-orders.OrderConfirmation = 'Order Confirmation';
-orders.OrderHistory = 'Order History';
-orders.poDownload = 'PO Download';
+orders.label = 'Bestellungen';
+orders.OrderConfirmation = 'Bestellbestätigung';
+orders.OrderHistory = 'Bestellhistorie';
+orders.poDownload = 'Bestellung herunterladen';
 
 export default {
   SidebarMenu: {
