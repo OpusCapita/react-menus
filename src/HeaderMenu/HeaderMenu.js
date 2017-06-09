@@ -1,6 +1,5 @@
 import React from 'react';
-import { MenuItem, Dropdown, Glyphicon } from 'react-bootstrap';
-import locales from './i18n/locales.js'
+import locales from './i18n';
 
 class HeaderMenu extends React.Component {
   static propTypes = {

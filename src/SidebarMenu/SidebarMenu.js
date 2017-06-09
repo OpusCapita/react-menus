@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import locales from './i18n/locales.js'
+import React from 'react';
+import locales from './i18n';
 
 export default class SidebarMenu extends React.Component {
   static defaultProps = {
