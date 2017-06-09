@@ -1,4 +1,5 @@
 import React from 'react';
+import locales from './i18n';
 
 class HeaderMenu extends React.Component {
   static propTypes = {
@@ -22,14 +23,43 @@ class HeaderMenu extends React.Component {
       currentOpenMenuName: null,
       showHideDropdown: "dropdown",
       activeMainMenuName: this.props.activeMainMenuName,
-      activeSubMenuName: this.props.activeSubMenuName
+      activeSubMenuName: this.props.activeSubMenuName,
+      activeLanguage: 'English'
     };
+    let i18n;
+  }
+
+   static contextTypes = {
+    i18n: React.PropTypes.object,
+    formatPatterns: React.PropTypes.object,
+    dateTimePattern: React.PropTypes.string,
+    setLocale: React.PropTypes.func
+  }
+
+  onLanguageChange = (locale, activeLanguage) => {
+    this.setState({
+      activeLanguage: activeLanguage
+    })
+    if(this.context.setLocale != null)
+      this.context.setLocale(locale)
+    this.context.locale = locale;
+    this.toggleDropDown();
+  }
+
+  componentWillReceiveProps(nextProps, nextContext){
+    if(this.i18n && nextContext.i18n.locale != this.i18n.locale){
+      this.i18n = nextContext.i18n.register('HeaderMenu', locales);
+    }
   }
 
   toggleDropDown() {
     const css = (this.state.showHideDropdown === "dropdown open") ? "dropdown" : "dropdown open";
-
     this.setState({ "showHideDropdown": css });
+  }
+
+  componentWillMount(){
+    if(this.context.i18n);
+      this.i18n = this.context.i18n.register('HeaderMenu', locales);
   }
 
   render() {
@@ -62,15 +92,22 @@ class HeaderMenu extends React.Component {
                 <span className="glyphicon glyphicon-user" />
               </a>
               <ul className="dropdown-menu">
-                <li className="dropdown-header hidden">
-                  Language
+                <li className="dropdown-header">
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.language') : 'Lanuage'}
                 </li>
+                <li className="divider" />
+                <li>
+                  <a id="lanugage-de" onClick={this.onLanguageChange.bind('German','de')}>German</a>
+                </li> 
+                <li>
+                  <a id="lanugage-en" onClick={this.onLanguageChange.bind('English','en')}>English</a>
+                </li> 
                 <li className="divider" />
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
                 </li>
                 <li>
-                  <a href="/auth/logout">Logout</a>
+                  <a href="/auth/logout">{this.i18n? this.i18n.getMessage('HeaderMenu.logout') : 'Logout'}</a>
                 </li>
               </ul>
             </li>
@@ -80,7 +117,6 @@ class HeaderMenu extends React.Component {
               </a>
             </li>
           </ul>
-
         </div>
       </div>
     )
