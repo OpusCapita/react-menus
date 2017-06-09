@@ -163,7 +163,7 @@ export default class SidebarMenu extends React.Component {
                       href="/bnp/orderConfirmation"
                       onClick={this.handleMenuItemClick.bind(this, '/bnp/orderConfirmation', 'Orders', 'OrderCon')}
                     >
-                      {this.i18n? this.i18n.getMessage('SidebarMenu.orders.orderConfirmation') : 'Order Confirmation'} <span className="badge">3</span>
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.orders.OrderConfirmation') : 'Order Confirmation'} <span className="badge">3</span>
                     </a>
                   </li>}
                   <li
@@ -178,7 +178,7 @@ export default class SidebarMenu extends React.Component {
                       href="/bnp/orderHistory"
                       onClick={this.handleMenuItemClick.bind(this, '/bnp/orderHistory', 'Orders', 'OrderHistory')}
                     >
-                      {this.i18n? this.i18n.getMessage('SidebarMenu.orders.orderHistory') : 'Order History'}
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.orders.OrderHistory') : 'Order History'}
                     </a>
                   </li>
                   { isSupplier &&
@@ -296,7 +296,7 @@ export default class SidebarMenu extends React.Component {
                       href="/bnp/invoice/create"
                       onClick={this.handleMenuItemClick.bind(this, '/bnp/invoice/create', 'Invoice', 'Create New')}
                     >
-                      Create New
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.createNew') : 'Other Docs'}
                     </a>
                   </li>
                 }
@@ -523,7 +523,7 @@ export default class SidebarMenu extends React.Component {
                 onClick={this.mainMenuWithSubmenuClick.bind(this, 'Company')}
               >
                 <span className="oci oci-user" />
-                Company
+                {this.i18n.getMessage('SidebarMenu.company.label')}
               </a>
               <ul className="dropdown-menu">
                 <li
@@ -538,7 +538,7 @@ export default class SidebarMenu extends React.Component {
                     href="/bnp/supplierInformation"
                     onClick={this.handleMenuItemClick.bind(this, '/bnp/supplierInformation', 'Company', 'Profile')}
                   >
-                    Profile
+                    {this.i18n.getMessage('SidebarMenu.company.profile')}
                   </a>
                 </li>
                 <li
@@ -553,7 +553,7 @@ export default class SidebarMenu extends React.Component {
                     href="/einvoice-send"
                     onClick={this.handleMenuItemClick.bind(this, '/einvoice-send', 'Company', 'ServiceConfig')}
                   >
-                    Service Configuration
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.company.serviceConfiguration') : 'Service Configuration'}
                   </a>
                 </li>
                 <li
@@ -568,7 +568,7 @@ export default class SidebarMenu extends React.Component {
                     href="/bnp/companyInformation"
                     onClick={this.handleMenuItemClick.bind(this, '/bnp/companyInformation', 'Company', 'CompanyInfo')}
                   >
-                    Company Information
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.company.companyInformation') : 'Company Information'}
                   </a>
                 </li>
               </ul>
@@ -577,7 +577,7 @@ export default class SidebarMenu extends React.Component {
             <li className={`${this.state.activeMainMenuName === 'Settings' && ' active' || ''}`}>
               <a href="/bnp/settings" onClick={this.handleMenuItemClick.bind(this, '/bnp/settings', 'Settings')}>
                 <span className="oci oci-admin" />
-                Settings
+                {this.i18n? this.i18n.getMessage('SidebarMenu.settings.label') : 'Settings'}
               </a>
             </li>
           </ul>

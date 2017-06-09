@@ -71,7 +71,7 @@ class HeaderMenu extends React.Component {
         <div className="navbar-header pull-right">
           <form className="navbar-form navbar-right">
             <div className="form-group">
-              <input type="text" className="form-control" placeholder="Search"/>
+              <input type="text" className="form-control" placeholder={this.i18n? this.i18n.getMessage('HeaderMenu.search') : 'Search'}/>
             </div>
             <button type="submit" className="btn btn-default">
               <span className="glyphicon glyphicon-search" />
