@@ -39,7 +39,6 @@ class HeaderMenu extends React.Component {
 
   onLanguageChange = (locale, activeLanguage) => {
     this.setState({
-      ...this.state,
       activeLanguage: activeLanguage
     })
     if(this.context.setLocale != null)
