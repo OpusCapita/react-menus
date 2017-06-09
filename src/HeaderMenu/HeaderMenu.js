@@ -45,15 +45,12 @@ class HeaderMenu extends React.Component {
     if(this.context.setLocale != null)
       this.context.setLocale(locale)
     this.context.locale = locale;
+    this.toggleDropDown();
   }
 
   componentWillReceiveProps(nextProps, nextContext){
-    console.log(nextContext);
-    if(this.i18n && this.i18n.locale && nextContext.i18n.locale != this.i18n.locale){
-      this.i18n.locale = nextContext.i18n.locale;
-      this.setState({
-       ...this.state
-      });
+    if(this.i18n && nextContext.i18n.locale != this.i18n.locale){
+      this.i18n = nextContext.i18n.register('HeaderMenu', locales);
     }
   }
 
@@ -63,13 +60,14 @@ class HeaderMenu extends React.Component {
   }
 
   componentWillMount(){
-    this.i18n = this.context.i18n.register('HeaderMenu', locales);
+    if(this.context.i18n);
+      this.i18n = this.context.i18n.register('HeaderMenu', locales);
   }
 
   render() {
     const { showHideDropdown } = this.state;
     const { currentUserData } = this.props;
-    
+
     return (
       <div className="navbar navbar-default navbar-main-menu" style={{ paddingRight: '25px' }}>
         <div className="navbar-header pull-right">
@@ -97,21 +95,21 @@ class HeaderMenu extends React.Component {
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
-                  {this.i18n.getMessage('HeaderMenu.language')}
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.language') : 'Lanuage'}
                 </li>
                 <li className="divider" />
                 <li>
-                  <a id="lanugage-de" onClick={this.onLanguageChange.bind('German', 'de')}>German</a>
+                  <a id="lanugage-de" onClick={this.onLanguageChange.bind('German','de')}>German</a>
                 </li> 
                 <li>
-                  <a id="lanugage-en" onClick={this.onLanguageChange.bind('English', 'en')}>English</a>
+                  <a id="lanugage-en" onClick={this.onLanguageChange.bind('English','en')}>English</a>
                 </li> 
                 <li className="divider" />
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
                 </li>
                 <li>
-                  <a href="/auth/logout">{this.i18n.getMessage('HeaderMenu.logout')}</a>
+                  <a href="/auth/logout">{this.i18n? this.i18n.getMessage('HeaderMenu.logout') : 'Logout'}</a>
                 </li>
               </ul>
             </li>
