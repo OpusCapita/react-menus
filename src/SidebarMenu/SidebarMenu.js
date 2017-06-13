@@ -1,14 +1,17 @@
 import React from 'react';
+import logo from './oc-logo-white.svg';
 import locales from './i18n';
 
 export default class SidebarMenu extends React.Component {
   static defaultProps = {
     isBuyer: true,
+    logo: logo
   }
 
   static propTypes = {
     isBuyer: React.PropTypes.bool.isRequired,
-    style: React.PropTypes.object
+    style: React.PropTypes.object,     
+    logo: React.PropTypes.string,
   }
 
   static contextTypes = {
@@ -88,7 +91,7 @@ export default class SidebarMenu extends React.Component {
   }
 
   render() {
-    const { isBuyer, style } = this.props;
+    const { isBuyer, logo, style } = this.props;
     const isSupplier = !isBuyer;
     return (
       <section
@@ -99,7 +102,7 @@ export default class SidebarMenu extends React.Component {
           <div className="nav-background" />
           <div className="navbar-header hidden-md">
             <a className="navbar-brand visible-lg" href="http://www.opuscapita.com/">
-              <img src="" style={{ height: '1.4em' }} />
+              <img src={logo} style={{ height: '1.4em' }} />
             </a>
           </div>
           <ul className="nav navbar-nav">
