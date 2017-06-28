@@ -1,7 +1,7 @@
 export default {
-  HeaderMenu: {
-  	search: 'Suche',
-    language: 'Sprache',
-    logout: 'Ausloggen'  
-  }
+	HeaderMenu: {
+		search: 'Suche',
+		language: 'Sprache',
+		logout: 'Ausloggen'  
+	}
 }
