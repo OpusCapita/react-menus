@@ -11,7 +11,7 @@ export default class SidebarMenu extends React.Component {
   static propTypes = {
     isBuyer: React.PropTypes.bool.isRequired,
     style: React.PropTypes.object,     
-    logo: React.PropTypes.string,
+    logo: React.PropTypes.string,  
   }
 
   static contextTypes = {
@@ -117,7 +117,7 @@ export default class SidebarMenu extends React.Component {
             </li>
 
             {
-              <li
+              /*<li
                 className={`dropdown${
               this.state.currentOpenMenuName === 'Orders' && ' open' || ''
                 }${
@@ -201,17 +201,17 @@ export default class SidebarMenu extends React.Component {
                     </a>
                   </li>}
                 </ul>
-              </li>
+              </li>*/
             }
 
             {
-              isBuyer &&
+              /*isBuyer &&
               <li className={`${this.state.activeMainMenuName === 'ShippingNotice' && ' active' || ''}`}>
                 <a href="/bnp/shippingNotice" onClick={this.handleMenuItemClick.bind(this, '/bnp/shippingNotice', 'ShippingNotice')}>
                   <span className="oci oci-texts" />
                   Shipping Notice
                 </a>
-              </li>
+              </li>*/
             }
 
             <li
@@ -235,7 +235,7 @@ export default class SidebarMenu extends React.Component {
               </a>
               <ul className="dropdown-menu">
                 {
-                  isBuyer &&
+                  /*isBuyer &&
                   <li
                     className={`${
                   this.state.activeMainMenuName === 'Invoice' &&
@@ -250,9 +250,9 @@ export default class SidebarMenu extends React.Component {
                     >
                       Approval <span className="badge">7</span>
                     </a>
-                  </li>
+                  </li>*/
                 }
-                <li
+                {/*<li
                   className={`${
                 this.state.activeMainMenuName === 'Invoice' &&
                 this.state.activeSubMenuName === 'Inspect' &&
@@ -266,7 +266,7 @@ export default class SidebarMenu extends React.Component {
                   >
                     {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.inspect') : 'Inspect'}
                   </a>
-                </li>
+                </li>*/}
                 {
                   isBuyer &&
                   <li
@@ -299,31 +299,31 @@ export default class SidebarMenu extends React.Component {
                       href="/bnp/invoice/create"
                       onClick={this.handleMenuItemClick.bind(this, '/bnp/invoice/create', 'Invoice', 'Create New')}
                     >
-                      {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.createNew') : 'Other Docs'}
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.createNew') : 'Create New'}
                     </a>
                   </li>
                 }
               </ul>
             </li>
 
-            <li className={`${this.state.activeMainMenuName === 'OtherDocs' && ' active' || ''}`}>
+            {/*<li className={`${this.state.activeMainMenuName === 'OtherDocs' && ' active' || ''}`}>
               <a href="/bnp/otherDocuments" onClick={this.handleMenuItemClick.bind(this, '/bnp/otherDocuments', 'OtherDocs')}>
                 <span className="oci oci-docu" />
                 {this.i18n? this.i18n.getMessage('SidebarMenu.otherDocs.label') : 'Other Docs'}
               </a>
-            </li>
+            </li>*/}
 
             {
-              isSupplier &&
+              /*isSupplier &&
               <li className={`${this.state.activeMainMenuName === 'Products' && ' active' || ''}`}>
                 <a href="/bnp/products" onClick={this.handleMenuItemClick.bind(this, '/bnp/products', 'Products')}>
                   <span className="oci oci-products" />
                   {this.i18n? this.i18n.getMessage('SidebarMenu.products.label') : 'Products'}
                 </a>
-              </li>
+              </li>*/
             }
 
-            <li
+            {/*<li
               className={`dropdown${
             this.state.currentOpenMenuName === 'RfQ' && ' open' || ''
               }${
@@ -398,10 +398,10 @@ export default class SidebarMenu extends React.Component {
                   </li>
                 }
               </ul>
-            </li>
+            </li>*/}
 
             {
-              isBuyer &&
+              /*isBuyer &&
               <li
                 className={`dropdown${
               this.state.currentOpenMenuName === 'Suppliers' && ' open' || ''
@@ -506,7 +506,7 @@ export default class SidebarMenu extends React.Component {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li>*/
             }
 
             <li
@@ -559,7 +559,7 @@ export default class SidebarMenu extends React.Component {
                     {this.i18n? this.i18n.getMessage('SidebarMenu.company.serviceConfiguration') : 'Service Configuration'}
                   </a>
                 </li>
-                <li
+                {/*<li
                   className={`${
                 this.state.activeMainMenuName === 'Company' &&
                 this.state.activeSubMenuName === 'CompanyInfo' &&
@@ -573,7 +573,7 @@ export default class SidebarMenu extends React.Component {
                   >
                     {this.i18n? this.i18n.getMessage('SidebarMenu.company.companyInformation') : 'Company Information'}
                   </a>
-                </li>
+                </li>*/}
               </ul>
             </li>
 
