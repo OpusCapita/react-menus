@@ -1,6 +1,6 @@
 {
   "name": "ocbesbn-react-components",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "OpusCapita React components",
   "main": "lib/ocbesbn-react-components.js",
   "module": "lib/ocbesbn-react-components.js",
