@@ -526,7 +526,7 @@ export default class SidebarMenu extends React.Component {
                 onClick={this.mainMenuWithSubmenuClick.bind(this, 'Company')}
               >
                 <span className="oci oci-user" />
-                {this.i18n.getMessage('SidebarMenu.company.label')}
+                {this.i18n? this.i18n.getMessage('SidebarMenu.company.label') : 'Company'}
               </a>
               <ul className="dropdown-menu">
                 <li
@@ -541,7 +541,7 @@ export default class SidebarMenu extends React.Component {
                     href="/bnp/supplierInformation"
                     onClick={this.handleMenuItemClick.bind(this, '/bnp/supplierInformation', 'Company', 'Profile')}
                   >
-                    {this.i18n.getMessage('SidebarMenu.company.profile')}
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.company.profile') : 'Profile'}
                   </a>
                 </li>
                {/* <li
