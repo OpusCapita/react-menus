@@ -82,13 +82,13 @@ class HeaderMenu extends React.Component {
               <a
                 className="dropdown-toggle hidden-sm hidden-xs"
                 onClick={this.toggleDropDown.bind(this)}
-                dataToggle="dropdown"
+                data-toggle="dropdown"
                 href="#"
               >
                 {currentUserData.id}
                 <b className="caret" />
               </a>
-              <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" dataToggle="dropdown" href="#">
+              <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" data-toggle="dropdown" href="#">
                 <span className="glyphicon glyphicon-user" />
               </a>
               <ul className="dropdown-menu">
@@ -98,10 +98,10 @@ class HeaderMenu extends React.Component {
                 <li className="divider" />
                 <li>
                   <a id="lanugage-de" onClick={this.onLanguageChange.bind('German','de')}>German</a>
-                </li> 
+                </li>
                 <li>
                   <a id="lanugage-en" onClick={this.onLanguageChange.bind('English','en')}>English</a>
-                </li> 
+                </li>
                 <li className="divider" />
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
@@ -112,7 +112,7 @@ class HeaderMenu extends React.Component {
               </ul>
             </li>
             <li className="dropdown">
-              <a className="dropdown-toggle hidden-sm hidden-xs" dataToggle="dropdown" href="#">
+              <a className="dropdown-toggle hidden-sm hidden-xs" data-toggle="dropdown" href="#">
                 { currentUserData.supplierid || currentUserData.customerid || "no tenant" }
               </a>
             </li>
