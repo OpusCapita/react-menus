@@ -31,8 +31,9 @@ export default class SidebarMenu extends React.Component {
   }
 
   componentWillMount(){
-    if(this.context.i18n)
+    if(this.context.i18n) {
       this.i18n = this.context.i18n.register('SidebarMenu', locales);
+    }
   }
 
   componentDidMount() {
@@ -44,7 +45,7 @@ export default class SidebarMenu extends React.Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext){
-    if(this.i18n && this.i18n.locale && nextContext.i18n.locale != this.i18n.locale){
+    if(this.i18n && this.i18n.locale && nextContext.i18n && nextContext.i18n.locale != this.i18n.locale){
       this.i18n = nextContext.i18n.register('SidebarMenu', locales);
     }
   }
