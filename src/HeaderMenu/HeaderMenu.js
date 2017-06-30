@@ -58,8 +58,9 @@ class HeaderMenu extends React.Component {
   }
 
   componentWillMount(){
-    if(this.context.i18n);
+    if(this.context.i18n) {
       this.i18n = this.context.i18n.register('HeaderMenu', locales);
+    }
   }
 
   render() {
