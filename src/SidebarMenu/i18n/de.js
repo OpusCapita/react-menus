@@ -28,16 +28,23 @@ orders.OrderConfirmation = 'Bestellbestätigung';
 orders.OrderHistory = 'Bestellhistorie';
 orders.poDownload = 'Bestellung herunterladen';
 
+let supplier = {};
+supplier.label = 'Lieferanten',
+supplier.onboardingDashboard = 'Onboarding Übersicht';
+supplier.onboardingCampaigns = 'Onboarding Kampagnen';
+supplier.createOnboardingCampaign = 'Onboarding Kampagne erstellen';
+supplier.viewOnboardingPage = 'Onboarding Startseite';
+
 export default {
   SidebarMenu: {
     home: 'Home',
-    orders: orders,  
+    orders: orders,
     invoice: invoice,
     otherDocs: otherDocs,
     products: products,
     rfg: rfg,
     company: company,
-    settings: settings
+    settings: settings,
+    supplier: supplier
   }
 }
-

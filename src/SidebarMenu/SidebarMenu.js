@@ -10,8 +10,8 @@ export default class SidebarMenu extends React.Component {
 
   static propTypes = {
     isBuyer: React.PropTypes.bool.isRequired,
-    style: React.PropTypes.object, 
-    logo: React.PropTypes.string,      
+    style: React.PropTypes.object,
+    logo: React.PropTypes.string
   }
 
   static contextTypes = {
@@ -420,7 +420,7 @@ export default class SidebarMenu extends React.Component {
                   onClick={this.mainMenuWithSubmenuClick.bind(this, 'Suppliers')}
                 >
                   <span className="oci oci-supdirect" />
-                  Suppliers
+                  {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.label') : 'Suppliers'}
                 </a>
                 <ul className="dropdown-menu">
                   {/*<li
@@ -465,7 +465,7 @@ export default class SidebarMenu extends React.Component {
                       href="/onboarding/dashboard"
                       onClick={this.handleMenuItemClick.bind(this, '/onboarding/dashboard', 'Suppliers', 'Dashboard')}
                     >
-                      Onboarding Dashboard
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.onboardingDashboard') : 'Onboarding Dashboard'}
                     </a>
                   </li>
                   <li
@@ -480,7 +480,7 @@ export default class SidebarMenu extends React.Component {
                       href="/onboarding"
                       onClick={this.handleMenuItemClick.bind(this, '/onboarding', 'Suppliers', 'Campaigns')}
                     >
-                      Onboarding Campaigns
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.onboardingCampaigns') : 'Onboarding Campaigns'}
                     </a>
                   </li>
                   <li
@@ -495,7 +495,7 @@ export default class SidebarMenu extends React.Component {
                       href="/onboarding/create"
                       onClick={this.handleMenuItemClick.bind(this, '/onboarding/create', 'Suppliers', 'Campaign')}
                     >
-                      Create Onboarding Campaign
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.createOnboardingCampaign') : 'Create Onboarding Campaign'}
                     </a>
                   </li>
                   <li>
@@ -503,7 +503,7 @@ export default class SidebarMenu extends React.Component {
                       href="/onboarding/public/ncc_onboard"
                       onClick={this.handleMenuItemClick.bind(this, '/onboarding/public/ncc_onboard', 'Company', 'Profile')}
                     >
-                      View Onboarding Page
+                      {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.viewOnboardingPage') : 'View Onboarding Page'}
                     </a>
                   </li>
                 </ul>
