@@ -73,7 +73,7 @@ export default class SidebarMenu extends React.Component {
   handleMenuItemClick(link, activeMainMenuName, activeSubMenuName, e) {
 
     e.preventDefault();
-    
+
     // Third argument is optional, null if a main-menu item does not have sub-menu items.
     if (typeof activeSubMenuName !== 'string') {
       activeSubMenuName = null;  // eslint-disable-line no-param-reassign
@@ -101,7 +101,7 @@ export default class SidebarMenu extends React.Component {
     var linkIsRelative = linkBasePathIndex === 0;
 
     if(linkIsRelative)
-        this.context.router.push(link.substr(currentBasePath.length) || );
+        this.context.router.push(link.substr(currentBasePath.length) || '/');
     else
         window.location = link;
   }
