@@ -2,6 +2,8 @@ export default {
 	HeaderMenu: {
 		search: 'Search',
 		language: 'Language',
-		logout: 'Logout'  
+		german: 'German',
+		english: 'English',
+		logout: 'Logout'
 	}
 }

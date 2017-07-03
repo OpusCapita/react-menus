@@ -82,7 +82,7 @@ class HeaderMenu extends React.Component {
             <li className={showHideDropdown}>
               <a
                 className="dropdown-toggle hidden-sm hidden-xs"
-                onClick={this.toggleDropDown.bind(this)}
+                onClick={ (e) => { this.toggleDropDown.bind(this); e.preventDefault(); } }
                 data-toggle="dropdown"
                 href="#"
               >
@@ -98,10 +98,14 @@ class HeaderMenu extends React.Component {
                 </li>
                 <li className="divider" />
                 <li>
-                  <a id="lanugage-de" onClick={this.onLanguageChange.bind('German','de')}>German</a>
+                  <a id="lanugage-de" onClick={ (e) => { this.onLanguageChange.bind('German','de'); e.preventDefault(); } }>
+                      {this.i18n? this.i18n.getMessage('HeaderMenu.german') : 'German'}
+                  </a>
                 </li>
                 <li>
-                  <a id="lanugage-en" onClick={this.onLanguageChange.bind('English','en')}>English</a>
+                  <a id="lanugage-en" onClick={ (e) => { this.onLanguageChange.bind('English','ee'); e.preventDefault(); } }>
+                      {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
+                  </a>
                 </li>
                 <li className="divider" />
                 <li>
