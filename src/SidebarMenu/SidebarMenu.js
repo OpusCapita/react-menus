@@ -15,7 +15,8 @@ export default class SidebarMenu extends React.Component {
   }
 
   static contextTypes = {
-    i18n: React.PropTypes.object
+    i18n: React.PropTypes.object,
+    router: React.PropTypes.object
   }
 
   constructor(props) {
@@ -70,6 +71,9 @@ export default class SidebarMenu extends React.Component {
   }
 
   handleMenuItemClick(link, activeMainMenuName, activeSubMenuName, e) {
+
+    e.preventDefault();
+    
     // Third argument is optional, null if a main-menu item does not have sub-menu items.
     if (typeof activeSubMenuName !== 'string') {
       activeSubMenuName = null;  // eslint-disable-line no-param-reassign
@@ -89,6 +93,17 @@ export default class SidebarMenu extends React.Component {
     if (Object.keys(activeMenuName).length) {
       this.setState(activeMenuName);
     }
+
+    var currentPath = window.location.pathname;
+    var slashIndex = currentPath && currentPath.indexOf('/', 1);
+    var currentBasePath = slashIndex > 0 && currentPath.substr(0, slashIndex);
+    var linkBasePathIndex = link.indexOf(currentBasePath);
+    var linkIsRelative = linkBasePathIndex === 0;
+
+    if(linkIsRelative)
+        this.context.router.push(link.substr(currentBasePath.length) || );
+    else
+        window.location = link;
   }
 
   render() {
