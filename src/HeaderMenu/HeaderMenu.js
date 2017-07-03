@@ -98,12 +98,12 @@ class HeaderMenu extends React.Component {
                 </li>
                 <li className="divider" />
                 <li>
-                  <a id="lanugage-de" onClick={ (e) => { this.onLanguageChange.bind('German','de'); e.preventDefault(); } }>
+                  <a id="lanugage-de" onClick={ this.onLanguageChange.bind('German','de') }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.german') : 'German'}
                   </a>
                 </li>
                 <li>
-                  <a id="lanugage-en" onClick={ (e) => { this.onLanguageChange.bind('English','ee'); e.preventDefault(); } }>
+                  <a id="lanugage-en" onClick={ this.onLanguageChange.bind('English','en') }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
                   </a>
                 </li>
