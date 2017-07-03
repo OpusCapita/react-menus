@@ -82,7 +82,7 @@ class HeaderMenu extends React.Component {
             <li className={showHideDropdown}>
               <a
                 className="dropdown-toggle hidden-sm hidden-xs"
-                onClick={ (e) => { this.toggleDropDown.bind(this); e.preventDefault(); } }
+                onClick={ this.toggleDropDown.bind(this); }
                 data-toggle="dropdown"
                 href="#"
               >
