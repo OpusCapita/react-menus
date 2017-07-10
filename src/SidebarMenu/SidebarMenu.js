@@ -525,6 +525,8 @@ export default class SidebarMenu extends React.Component {
               </li>
             }
 
+            {
+            isSupplier &&
             <li
               className={`dropdown${
             this.state.currentOpenMenuName === 'Company' && ' open' || ''
@@ -592,6 +594,7 @@ export default class SidebarMenu extends React.Component {
                 </li>*/}
               </ul>
             </li>
+            }
 
             {/*<li className={`${this.state.activeMainMenuName === 'Settings' && ' active' || ''}`}>
               <a href="/bnp/settings" onClick={this.handleMenuItemClick.bind(this, '/bnp/settings', 'Settings')}>
