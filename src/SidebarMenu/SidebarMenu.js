@@ -514,14 +514,6 @@ export default class SidebarMenu extends React.Component {
                       {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.createOnboardingCampaign') : 'Create Onboarding Campaign'}
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="/onboarding/public/ncc_onboard"
-                      onClick={this.handleMenuItemClick.bind(this, '/onboarding/public/ncc_onboard', 'Company', 'Profile')}
-                    >
-                      {this.i18n? this.i18n.getMessage('SidebarMenu.supplier.viewOnboardingPage') : 'View Onboarding Page'}
-                    </a>
-                  </li>
                 </ul>
               </li>
             }
