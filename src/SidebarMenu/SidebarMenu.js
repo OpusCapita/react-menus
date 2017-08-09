@@ -35,6 +35,10 @@ export default class SidebarMenu extends React.Component {
     if(this.context.i18n) {
       this.i18n = this.context.i18n.register('SidebarMenu', locales);
     }
+    const elem = document.querySelector(`a[href='${window.location.pathname}']`);
+    if (elem != null) {
+      elem.click();
+    }
   }
 
   componentDidMount() {
