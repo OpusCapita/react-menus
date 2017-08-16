@@ -39,6 +39,10 @@ export default class SidebarMenu extends React.Component {
 
   componentDidMount() {
     document.body.addEventListener('click', this.hideMenu, false);
+    const elem = document.querySelector(`a[href='${window.location.pathname}']`);
+    if (elem != null) {
+      elem.click();
+    }
   }
 
   componentWillUnmount() {
