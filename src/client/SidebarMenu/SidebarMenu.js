@@ -2,120 +2,156 @@ import React from 'react';
 import logo from './oc-logo-white.svg';
 import locales from './i18n';
 
-export default class SidebarMenu extends React.Component {
-  static defaultProps = {
-    isBuyer: true,
-    logo: logo
-  }
+export default class SidebarMenu extends React.Component
+{
+    static defaultProps = {
+        isBuyer: true,
+        logo: logo
+    }
 
-  static propTypes = {
-    isBuyer: React.PropTypes.bool.isRequired,
-    style: React.PropTypes.object,
-    logo: React.PropTypes.string
-  }
+    static propTypes = {
+        isBuyer: React.PropTypes.bool.isRequired,
+        style: React.PropTypes.object,
+        logo: React.PropTypes.string
+    }
 
-  static contextTypes = {
-    i18n: React.PropTypes.object,
-    router: React.PropTypes.object
-  }
+    static contextTypes = {
+        i18n: React.PropTypes.object,
+        router: React.PropTypes.object
+    }
 
-  constructor(props) {
-    super(props);
+    constructor(props)
+    {
+        super(props);
 
-    this.state = {
-      oldOpenMenuName: null,
-      currentOpenMenuName: null,
-      activeMainMenuName: 'Home',
-      activeSubMenuName: null,
+        this.state = {
+            oldOpenMenuName: null,
+            currentOpenMenuName: null,
+            activeMainMenuName: 'Home',
+            activeSubMenuName: null,
+        };
+        let i18n;
+    }
+
+    componentWillMount()
+    {
+        if(this.context.i18n)
+        {
+            this.i18n = this.context.i18n.register('SidebarMenu', locales);
+        }
+    }
+
+    componentDidMount()
+    {
+        document.body.addEventListener('click', this.hideMenu, false);
+        const elem = document.querySelector(`a[href='${window.location.pathname}']`);
+        if(elem != null)
+        {
+            elem.click();
+        }
+    }
+
+    componentWillUnmount()
+    {
+        document.body.removeEventListener('click', this.hideMenu, false);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext)
+    {
+        if(this.i18n && this.i18n.locale && nextContext.i18n && nextContext.i18n.locale != this.i18n.locale)
+        {
+            this.i18n = nextContext.i18n.register('SidebarMenu', locales);
+        }
+    }
+
+    hideMenu = () =>
+    {
+        if(this.state.currentOpenMenuName)
+        {
+            this.setState(
+            {
+                oldOpenMenuName: this.state.currentOpenMenuName,
+                currentOpenMenuName: null,
+            });
+        }
+        else if(this.state.oldOpenMenuName)
+        {
+            this.setState(
+            {
+                oldOpenMenuName: null
+            });
+        }
     };
-    let i18n;
-  }
 
-  componentWillMount(){
-    if(this.context.i18n) {
-      this.i18n = this.context.i18n.register('SidebarMenu', locales);
-    }
-  }
+    mainMenuWithSubmenuClick(menuName, e)
+    {
+        e.preventDefault();
 
-  componentDidMount() {
-    document.body.addEventListener('click', this.hideMenu, false);
-    const elem = document.querySelector(`a[href='${window.location.pathname}']`);
-    if (elem != null) {
-      elem.click();
-    }
-  }
-
-  componentWillUnmount() {
-    document.body.removeEventListener('click', this.hideMenu, false);
-  }
-
-  componentWillReceiveProps(nextProps, nextContext){
-    if(this.i18n && this.i18n.locale && nextContext.i18n && nextContext.i18n.locale != this.i18n.locale){
-      this.i18n = nextContext.i18n.register('SidebarMenu', locales);
-    }
-  }
-
-  hideMenu = () => {
-    if (this.state.currentOpenMenuName) {
-      this.setState({
-        oldOpenMenuName: this.state.currentOpenMenuName,
-        currentOpenMenuName: null,
-      });
-    } else if (this.state.oldOpenMenuName) {
-      this.setState({ oldOpenMenuName: null });
-    }
-  };
-
-  mainMenuWithSubmenuClick(menuName, e) {
-    e.preventDefault();
-
-    if (this.state.oldOpenMenuName !== menuName) {
-      this.setState({ currentOpenMenuName: menuName });
-    }
-  }
-
-  handleMenuItemClick(link, activeMainMenuName, activeSubMenuName, e) {
-
-    e.preventDefault();
-
-    // Third argument is optional, null if a main-menu item does not have sub-menu items.
-    if (typeof activeSubMenuName !== 'string') {
-      activeSubMenuName = null;  // eslint-disable-line no-param-reassign
-      e = arguments[2];  // eslint-disable-line no-param-reassign
+        if(this.state.oldOpenMenuName !== menuName)
+        {
+            this.setState(
+            {
+                currentOpenMenuName: menuName
+            });
+        }
     }
 
-    const activeMenuName = {};
+    handleMenuItemClick(link, activeMainMenuName, activeSubMenuName, e)
+    {
 
-    if (this.state.activeMainMenuName !== activeMainMenuName) {
-      activeMenuName.activeMainMenuName = activeMainMenuName;
+        e.preventDefault();
+
+        // Third argument is optional, null if a main-menu item does not have sub-menu items.
+        if(typeof activeSubMenuName !== 'string')
+        {
+            activeSubMenuName = null; // eslint-disable-line no-param-reassign
+            e = arguments[2]; // eslint-disable-line no-param-reassign
+        }
+
+        const activeMenuName = {};
+
+        if(this.state.activeMainMenuName !== activeMainMenuName)
+        {
+            activeMenuName.activeMainMenuName = activeMainMenuName;
+        }
+
+        if(this.state.activeSubMenuName !== activeSubMenuName)
+        {
+            activeMenuName.activeSubMenuName = activeSubMenuName;
+        }
+
+        if(Object.keys(activeMenuName).length)
+        {
+            this.setState(activeMenuName);
+        }
+
+        var currentPath = window.location.pathname;
+        var slashIndex = currentPath && currentPath.indexOf('/', 1);
+        var currentBasePath = slashIndex > 0 ? currentPath.substr(0, slashIndex) : currentPath;
+        var linkBasePathIndex = link.indexOf(currentBasePath);
+        var linkIsRelative = linkBasePathIndex === 0;
+
+        if(linkIsRelative)
+        {
+            this.context.router.push(link.substr(currentBasePath.length) || '/');
+        }
+        else
+        {
+            window.location = link;
+        }
     }
 
-    if (this.state.activeSubMenuName !== activeSubMenuName) {
-      activeMenuName.activeSubMenuName = activeSubMenuName;
-    }
-
-    if (Object.keys(activeMenuName).length) {
-      this.setState(activeMenuName);
-    }
-
-    var currentPath = window.location.pathname;
-    var slashIndex = currentPath && currentPath.indexOf('/', 1);
-    var currentBasePath = slashIndex > 0 ? currentPath.substr(0, slashIndex) : currentPath;
-    var linkBasePathIndex = link.indexOf(currentBasePath);
-    var linkIsRelative = linkBasePathIndex === 0;
-
-    if(linkIsRelative) {
-      this.context.router.push(link.substr(currentBasePath.length) || '/');
-    } else {
-      window.location = link;
-    }
-  }
-
-  render() {
-    const { isBuyer, logo, style } = this.props;
-    const isSupplier = !isBuyer;
-    return (
-      <section
+    render()
+    {
+        const
+        {
+            isBuyer,
+            logo,
+            style
+        } = this.props;
+        const isSupplier = !isBuyer;
+        return(
+            <section
         className="sidebar"
         style={Object.assign({ minHeight: '100vh', position: 'fixed', zIndex: 3 }, style)}
       >
@@ -602,6 +638,6 @@ export default class SidebarMenu extends React.Component {
           </ul>
         </nav>
       </section>
-    );
-  }
+        );
+    }
 }

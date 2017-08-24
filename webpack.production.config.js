@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+module.exports =
+{
     entry:
     {
         headerMenu: './src/client/HeaderMenu',
-        currencies: './src/client/SidebarMenu'
+        sidebarMenu: './src/client/SidebarMenu'
     },
     output:
     {
@@ -19,32 +20,33 @@ module.exports = {
 
     resolve:
     {
-        modules: ['node_modules'],
+        modules: [process.env.NODE_PATH, 'node_modules'],
         extensions: ['.json', '.jsx', '.js']
     },
 
     resolveLoader:
     {
-        modules: ['node_modules']
+        modules: [process.env.NODE_PATH, 'node_modules']
     },
 
     module:
     {
         rules: [
             {
-                test: /.jsx?$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
                 include: [path.join(__dirname, 'src/client')],
                 options:
                 {
-                    presets: [
-                        ['es2015',
-                        {
-                            modules: false
-                        }],
-                'react',
-                'stage-0'
-                ]}
+                    presets: [['es2015',
+                    {
+                        modules: false
+                    }], 'react', 'stage-0']
+                }
+            },
+            {
+                test: /\.svg$/,
+                loader: 'babel-loader!svg-react-loader'
             }
         ]
     }

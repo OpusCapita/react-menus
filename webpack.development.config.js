@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
-    entry: './www/index-page.js',
+module.exports =
+{
+    entry: './src/local/index-page.js',
     output:
     {
         path: path.resolve(__dirname, './src/server/static'),
@@ -25,22 +26,27 @@ module.exports = {
     {
         rules: [
             {
-                test: /.jsx?$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
-                include: [path.join(__dirname, 'src'), path.join(__dirname, 'www')],
+                include: [path.join(__dirname, 'src/client'), path.join(__dirname, 'src/local')],
                 options:
                 {
                     presets: [
-            ['es2015',
-                        {
-                            modules: false
-                        }],
-            'react',
-            'stage-0'
-          ],
-                    plugins: ['transform-decorators-legacy']
+                        [
+                            'es2015',
+                            {
+                                modules: false
+                            }
+                        ],
+                        'react',
+                        'stage-0'
+                    ]
                 }
-      }
-    ]
+            },
+            {
+                test: /\.svg$/,
+                loader: 'babel-loader!svg-react-loader'
+            }
+        ]
     }
 }
