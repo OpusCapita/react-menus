@@ -105,9 +105,14 @@ export default class SidebarMenu extends React.Component {
     var linkIsRelative = linkBasePathIndex === 0;
 
     if(linkIsRelative) {
-      this.context.router.push(link);
+      var newPath = link.substr(currentBasePath.length) || '/'
+      if(link.indexOf(newPath) >=0) {
+        this.context.router.push(link);
+      } else {
+        this.context.router.push(newPath);
+      }
     } else {
-      window.location = link;
+        window.location = link;
     }
   }
 
