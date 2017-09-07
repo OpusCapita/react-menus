@@ -7,11 +7,10 @@ services:
      - mysql
      - consul
      - registrator
-     - nginx
-     - user
+     - acl
     labels:
      SERVICE_NAME: 'menus'
-     SERVICE_TAGS: 'external'
+     SERVICE_TAGS: 'external,kong'
     environment:
      SERVICE_3000_CHECK_HTTP: /api/health/check
      SERVICE_3000_CHECK_INTERVAL: 15s
@@ -31,12 +30,12 @@ services:
     depends_on:
      - registrator
 
-  nginx:
-    image: gr4per/nginx-rp:dev
+  nginx-rp:
+    image: opuscapita/nginx-rp:dev
     ports:
       - '8080:8080'
     depends_on:
-      - consul
+      - registrator
 
   registrator:
     image: gliderlabs/registrator
@@ -65,21 +64,19 @@ services:
     ports:
       - $REDIS_PORT:$REDIS_PORT
 
-  user:
-    image: opuscapita/user:dev
-    depends_on:
-      - mysql
-      - consul
-      - registrator
+  acl:
+    image: opuscapita/acl:dev
     labels:
-      SERVICE_NAME: 'user'
+      - 'SERVICE_NAME=acl'
+      - 'SERVICE_TAGS=external,kong'
     environment:
-      MYSQL_DATABASE: $MYSQL_DATABASE
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-      REDIS_AUTH: $REDIS_AUTH
-      SERVICE_3008_CHECK_HTTP: /api/health/check
-      SERVICE_3008_CHECK_INTERVAL: 15s
-      SERVICE_3008_CHECK_TIMEOUT: 3s
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      SERVICE_3013_CHECK_HTTP: /api/health/check
+      SERVICE_3013_CHECK_INTERVAL: 15s
+      SERVICE_3013_CHECK_TIMEOUT: 3s
     ports:
-     - '3008:3008'
+     - '3013:3013'
+    depends_on:
+      - consul
     command: 'npm run dev'
