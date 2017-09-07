@@ -24,6 +24,8 @@ class HeaderMenu extends React.Component
     {
         super(props);
 
+        this.languageDropdown = null;
+
         this.state = {
             showDropdown : false,
             userProfile : null,
@@ -54,9 +56,19 @@ class HeaderMenu extends React.Component
     storeUserProfile(profile)
     {}
 
-    toggleDropDown()
+    toggleDropDown(e)
     {
-        this.setShowDropdown(!this.state.showDropdown);
+        e.preventDefault();
+
+        const classes = this.languageDropdown.className.split(' ');
+        const openIndex = classes.indexOf('open');
+
+        if(openIndex > -1)
+            delete classes[openIndex];
+        else
+            classes.push('open');
+
+        this.languageDropdown.className = classes.join(' ');
     }
 
     setShowDropdown(show)
@@ -88,8 +100,8 @@ class HeaderMenu extends React.Component
                         </button>
                     </form>
                     <ul className="nav navbar-nav navbar-no-collapse navbar-right">
-                        <li className={this.state.showDropdown ? 'dropdown open' : 'dropdown'}>
-                            <a className="dropdown-toggle hidden-sm hidden-xs" onClick={() => this.toggleDropDown() } data-toggle="dropdown" href="#">
+                        <li className="dropdown" ref={node => this.languageDropdown = node}>
+                            <a className="dropdown-toggle hidden-sm hidden-xs" onClick={e => this.toggleDropDown(e) } onBlur={e => this.toggleDropDown(e) } data-toggle="dropdown" href="#">
                                 {this.state.username} <b className="caret" />
                             </a>
                             <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" data-toggle="dropdown" href="#">
