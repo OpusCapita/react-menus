@@ -25,9 +25,9 @@ class HeaderMenu extends React.Component
         super(props);
 
         this.languageDropdown = null;
+        this.showDropdown = false;
 
         this.state = {
-            showDropdown : false,
             userProfile : null,
             currentLanguage : null,
             username : '',
@@ -60,22 +60,21 @@ class HeaderMenu extends React.Component
     {
         e.preventDefault();
 
-        const classes = this.languageDropdown.className.split(' ');
-        const openIndex = classes.indexOf('open');
-
-        if(openIndex > -1)
-            delete classes[openIndex];
-        else
-            classes.push('open');
-
-        this.languageDropdown.className = classes.join(' ');
+        this.showDropdown = !this.showDropdown;
+        this.setShowDropdown(this.showDropdown);
     }
 
     setShowDropdown(show)
     {
-        this.setState({
-            showDropdown: show
-        });
+        const classes = this.languageDropdown.className.split(' ');
+        const openIndex = classes.indexOf('open');
+
+        if(openIndex > -1 && !show)
+            delete classes[openIndex];
+        else if(show)
+            classes.push('open');
+
+        this.languageDropdown.className = classes.join(' ');
     }
 
     componentWillMount()
@@ -111,7 +110,7 @@ class HeaderMenu extends React.Component
                                 <li className="dropdown-header">
                                     {i18n.getMessage('HeaderMenu.language')}
                                 </li>
-                                <li className="divider"></li>
+
                                 <li>
                                     <a id="lanugage-de" onClick={() => this.changeLanguage('de') }>
                                         {i18n.getMessage('HeaderMenu.german')}
@@ -123,9 +122,10 @@ class HeaderMenu extends React.Component
                                     </a>
                                 </li>
                                 <li className="divider"></li>
-                                <li>
-                                    <a className="hidden" href="#">Change Assignment</a>
+                                <li className="dropdown-header">
+                                    {i18n.getMessage('HeaderMenu.user')}
                                 </li>
+
                                 <li>
                                     <a href="/auth/logout">{i18n.getMessage('HeaderMenu.logout')}</a>
                                 </li>
