@@ -80,7 +80,7 @@ class HeaderMenu extends React.Component {
         uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
     }
     return (
-      <a href={uri}>
+      <a href={uri} onClick={ this.toggleHelpDropDown.bind(this) }>
         {this.i18n? this.i18n.getMessage('HeaderMenu.manual') : 'Manual'}
       </a>
     );
@@ -160,11 +160,16 @@ class HeaderMenu extends React.Component {
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
                 <li className="divider" />
-                <li>
+                <li style={{ paddingLeft: '24px'}}>
                   +49 231 3967 0
                 </li>
                 <li>
-                  <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
+                  <a
+                    href="mailto:customerservice.de@opuscapita.com"
+                    onClick={ this.toggleHelpDropDown.bind(this) }
+                  >
+                    customerservice.de@opuscapita.com
+                  </a>
                 </li>
                 <li className="divider" />
                 <li>
