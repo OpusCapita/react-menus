@@ -98,7 +98,7 @@ class HeaderMenu extends React.Component {
               <input type="text" className="form-control" placeholder={this.i18n? this.i18n.getMessage('HeaderMenu.search') : 'Search'}/>
             </div>
             <button type="submit" className="btn btn-default">
-              <span className="glyphicon glyphicon-search" />
+              <span className="glyphicon glyphicon-search"></span>
             </button>
           </form>
           <ul className="nav navbar-nav navbar-no-collapse navbar-right">
@@ -110,16 +110,16 @@ class HeaderMenu extends React.Component {
                 href="#"
               >
                 {currentUserData.id}
-                <b className="caret" />
+                <b className="caret"></b>
               </a>
               <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" data-toggle="dropdown" href="#">
-                <span className="glyphicon glyphicon-user" />
+                <span className="glyphicon glyphicon-user"></span>
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
                   {this.i18n? this.i18n.getMessage('HeaderMenu.language') : 'Lanuage'}
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
                   <a id="lanugage-de" onClick={ this.onLanguageChange.bind('German','de') }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.german') : 'German'}
@@ -130,7 +130,7 @@ class HeaderMenu extends React.Component {
                       {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
                   </a>
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
                 </li>
@@ -153,20 +153,20 @@ class HeaderMenu extends React.Component {
                 href="#"
               >
                 ?
-                <b className="caret" />
+                <b className="caret"></b>
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
                   {this.i18n? this.i18n.getMessage('HeaderMenu.phone') : 'Phone'}: +49 231 3967 0
                 </li>
                 <li>
                   {this.i18n? this.i18n.getMessage('HeaderMenu.email') : 'Email'}: <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
                 </li>
-                <li className="divider" />
+                <li className="divider">
                   {this.renderManualLink()}
                 </li>
               </ul>
