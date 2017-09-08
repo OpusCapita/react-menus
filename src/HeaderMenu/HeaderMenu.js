@@ -161,12 +161,13 @@ class HeaderMenu extends React.Component {
                 </li>
                 <li className="divider" />
                 <li>
-                  {this.i18n? this.i18n.getMessage('HeaderMenu.phone') : 'Phone'}: +49 231 3967 0
+                  +49 231 3967 0
                 </li>
                 <li>
-                  {this.i18n? this.i18n.getMessage('HeaderMenu.email') : 'Email'}: <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
+                  <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
                 </li>
                 <li className="divider" />
+                <li>
                   {this.renderManualLink()}
                 </li>
               </ul>
