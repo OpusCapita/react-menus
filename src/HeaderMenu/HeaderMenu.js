@@ -64,7 +64,7 @@ class HeaderMenu extends React.Component {
   }
 
   renderManualLink() {
-    let uri = '/blob/public/api/opuscapita/files/public/docs/SupplierManual.pdf'
+    let uri = '/blob/public/api/opuscapita/files/public/docs/SupplierManual.pdf';
     let manualName = this.i18n.getMessage('HeaderMenu.manualName');
     if (manualName) {
         uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
@@ -129,7 +129,6 @@ class HeaderMenu extends React.Component {
                 </li>
               </ul>
             </li>
-
             <li className="dropdown">
               <a className="dropdown-toggle hidden-sm hidden-xs" data-toggle="dropdown" href="#">
                 { currentUserData.supplierid || currentUserData.customerid || "no tenant" }
