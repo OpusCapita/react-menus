@@ -61,6 +61,7 @@ class HeaderMenu extends React.Component {
   }
 
   toggleHelpDropDown(e) {
+    e && e.preventDefault && e.preventDefault();
     const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideHelpDropdown": css });
   }
@@ -78,7 +79,7 @@ class HeaderMenu extends React.Component {
         uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
     }
     return (
-      <a href={uri} onClick={ this.toggleHelpDropDown.bind(this) }>
+      <a onClick={ () => { window.location.assign(uri); this.toggleHelpDropDown.bind(this)} }>
         {this.i18n? this.i18n.getMessage('HeaderMenu.manual') : 'Manual'}
       </a>
     );
@@ -161,13 +162,8 @@ class HeaderMenu extends React.Component {
                 <li style={{ paddingLeft: '20px'}}>
                   +49 231 3967 0
                 </li>
-                <li>
-                  <a
-                    href="mailto:customerservice.de@opuscapita.com"
-                    onClick={ this.toggleHelpDropDown.bind(this) }
-                  >
+                <li style={{ paddingLeft: '20px'}}>
                     customerservice.de@opuscapita.com
-                  </a>
                 </li>
                 <li className="divider"></li>
                 <li>
