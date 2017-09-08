@@ -61,8 +61,6 @@ class HeaderMenu extends React.Component {
   }
 
   toggleHelpDropDown(e) {
-    e && e.preventDefault && e.preventDefault();
-
     const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideHelpDropdown": css });
   }
@@ -152,7 +150,7 @@ class HeaderMenu extends React.Component {
                 data-toggle="dropdown"
                 href="#"
               >
-                ?
+                <span className="glyphicon glyphicon-question-sign"></span>
                 <b className="caret"></b>
               </a>
               <ul className="dropdown-menu">
@@ -160,7 +158,7 @@ class HeaderMenu extends React.Component {
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
                 <li className="divider"></li>
-                <li style={{ paddingLeft: '25px'}}>
+                <li style={{ paddingLeft: '20px'}}>
                   +49 231 3967 0
                 </li>
                 <li>
