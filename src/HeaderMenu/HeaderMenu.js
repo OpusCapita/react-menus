@@ -159,7 +159,7 @@ class HeaderMenu extends React.Component {
                 <li className="dropdown-header">
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
-                <li className="divider"><li>
+                <li className="divider"></li>
                 <li style={{ paddingLeft: '25px'}}>
                   +49 231 3967 0
                 </li>
