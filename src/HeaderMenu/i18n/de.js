@@ -4,6 +4,11 @@ export default {
 		language: 'Sprache',
 		german: 'Deutsch',
 		english: 'Englisch',
-		logout: 'Ausloggen'
+		logout: 'Ausloggen',
+        support: 'Support',
+        email: 'E-Mail',
+        phone: 'Tel.',
+        manual: 'Dokumentation',
+        manualName: 'Lieferantenhandbuch.pdf'
 	}
 }
