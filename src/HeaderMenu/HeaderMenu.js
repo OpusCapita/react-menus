@@ -22,6 +22,7 @@ class HeaderMenu extends React.Component {
       oldOpenMenuName: null,
       currentOpenMenuName: null,
       showHideDropdown: "dropdown",
+      showHideHelpDropdown: "dropdown",
       activeMainMenuName: this.props.activeMainMenuName,
       activeSubMenuName: this.props.activeSubMenuName,
       activeLanguage: 'English'
@@ -52,9 +53,18 @@ class HeaderMenu extends React.Component {
     }
   }
 
-  toggleDropDown() {
+  toggleDropDown(e) {
+    e && e.preventDefault && e.preventDefault();
+
     const css = (this.state.showHideDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideDropdown": css });
+  }
+
+  toggleHelpDropDown(e) {
+    e && e.preventDefault && e.preventDefault();
+
+    const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
+    this.setState({ "showHideHelpDropdown": css });
   }
 
   componentWillMount(){
