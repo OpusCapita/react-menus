@@ -73,6 +73,19 @@ class HeaderMenu extends React.Component {
     }
   }
 
+  renderManualLink() {
+    let uri = '/blob/public/api/opuscapita/files/public/docs/SupplierManual.pdf';
+    let manualName = this.i18n.getMessage('HeaderMenu.manualName');
+    if (manualName) {
+        uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
+    }
+    return (
+      <a href={uri}>
+        {this.i18n? this.i18n.getMessage('HeaderMenu.manual') : 'Manual'}
+      </a>
+    );
+  }
+
   render() {
     const { showHideDropdown } = this.state;
     const { currentUserData } = this.props;
@@ -126,6 +139,33 @@ class HeaderMenu extends React.Component {
                 { currentUserData.supplierid || currentUserData.customerid || "no tenant" }
               </a>
             </li>
+
+            <li className={showHideDropdown}>
+              <a
+                className="dropdown-toggle hidden-sm hidden-xs"
+                onClick={ this.toggleDropDown.bind(this) }
+                data-toggle="dropdown"
+                href="#"
+              >
+                ?
+                <b className="caret" />
+              </a>
+              <ul className="dropdown-menu">
+                <li className="dropdown-header">
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
+                </li>
+                <li className="divider" />
+                <li>
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.phone') : 'Phone'}: +49 231 3967 0
+                </li>
+                <li>
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.email') : 'Email'}: <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
+                </li>
+                <li className="divider" />
+                  {this.renderManualLink()}
+              </ul>
+            </li>
+
           </ul>
         </div>
       </div>
