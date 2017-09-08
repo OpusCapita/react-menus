@@ -166,7 +166,7 @@ class HeaderMenu extends React.Component {
                 <li>
                   <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
                 </li>
-                <li className="divider">
+                <li className="divider"></li>
                 <li>
                   {this.renderManualLink()}
                 </li>
