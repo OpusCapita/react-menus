@@ -79,7 +79,7 @@ class HeaderMenu extends React.Component {
         uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
     }
     return (
-      <a onClick={ () => { window.location.assign(uri); this.toggleHelpDropDown.bind(this)} }>
+      <a href="#" onClick={ (e) => { e.preventDefault(); window.location.assign(uri); this.toggleHelpDropDown(); } }>
         {this.i18n? this.i18n.getMessage('HeaderMenu.manual') : 'Manual'}
       </a>
     );
