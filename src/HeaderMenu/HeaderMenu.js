@@ -6,12 +6,14 @@ class HeaderMenu extends React.Component {
     currentUserData: React.PropTypes.object,
     activeMainMenuName: React.PropTypes.string,
     activeSubMenuName: React.PropTypes.string,
-    showHideDropdown: React.PropTypes.string
+    showHideDropdown: React.PropTypes.string,
+    showHideHelpDropdown: React.PropTypes.string
   };
 
   static defaultProps = {
     activeMainMenuName: 'Home',
     showHideDropdown: "dropdown",
+    showHideHelpDropdown: "dropdown",
     activeSubMenuName: null
   };
 
@@ -22,6 +24,7 @@ class HeaderMenu extends React.Component {
       oldOpenMenuName: null,
       currentOpenMenuName: null,
       showHideDropdown: "dropdown",
+      showHideHelpDropdown: "dropdown",
       activeMainMenuName: this.props.activeMainMenuName,
       activeSubMenuName: this.props.activeSubMenuName,
       activeLanguage: 'English'
@@ -57,6 +60,11 @@ class HeaderMenu extends React.Component {
     this.setState({ "showHideDropdown": css });
   }
 
+  toggleHelpDropDown() {
+    const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
+    this.setState({ "showHideHelpDropdown": css });
+  }
+
   componentWillMount(){
     if(this.context.i18n) {
       this.i18n = this.context.i18n.register('HeaderMenu', locales);
@@ -77,7 +85,7 @@ class HeaderMenu extends React.Component {
   }
 
   render() {
-    const { showHideDropdown } = this.state;
+    const { showHideDropdown, showHideHelpDropdown } = this.state;
     const { currentUserData } = this.props;
 
     return (
@@ -135,10 +143,10 @@ class HeaderMenu extends React.Component {
               </a>
             </li>
 
-            <li className={showHideDropdown}>
+            <li className={showHideHelpDropdown}>
               <a
                 className="dropdown-toggle hidden-sm hidden-xs"
-                onClick={ this.toggleDropDown.bind(this) }
+                onClick={ this.toggleHelpDropDown.bind(this) }
                 data-toggle="dropdown"
                 href="#"
               >
