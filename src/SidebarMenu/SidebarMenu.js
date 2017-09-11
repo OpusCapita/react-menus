@@ -541,7 +541,7 @@ export default class SidebarMenu extends React.Component {
                 aria-expanded="false"
                 onClick={this.mainMenuWithSubmenuClick.bind(this, 'Invoice')}
               >
-                <span className="oci oci-user" />
+                <span className="oci oci-invoice" />
                   {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.label') : 'Invoice'}
               </a>
               <ul className="dropdown-menu">
