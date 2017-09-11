@@ -527,6 +527,44 @@ export default class SidebarMenu extends React.Component {
             isSupplier &&
             <li
               className={`dropdown${
+                this.state.currentOpenMenuName === 'Invoice' && ' open' || ''
+              }${
+                this.state.activeMainMenuName === 'Invoice' && ' active' || ''
+              }`}
+            >
+              <a
+                href="#"
+                className="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onClick={this.mainMenuWithSubmenuClick.bind(this, 'Invoice')}
+              >
+                <span className="oci oci-user" />
+                  {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.label') : 'Invoice'}
+              </a>
+              <ul className="dropdown-menu">
+                <li
+                  className={`${
+                    this.state.activeMainMenuName === 'Invoice' &&
+                    this.state.activeSubMenuName === 'ServiceConfig' &&
+                    ' active' ||
+                    ''
+                  }`}
+                >
+                  <a
+                    href="/einvoice-send"
+                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send', 'Invoice', 'ServiceConfig')}
+                  >
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.serviceConfiguration') : 'Service Configuration'}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li
+              className={`dropdown${
             this.state.currentOpenMenuName === 'Company' && ' open' || ''
               }${
             this.state.activeMainMenuName === 'Company' && ' active' || ''
