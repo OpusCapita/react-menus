@@ -542,7 +542,7 @@ export default class SidebarMenu extends React.Component {
                 onClick={this.mainMenuWithSubmenuClick.bind(this, 'Invoice')}
               >
                 <span className="oci oci-invoice" />
-                  {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.label') : 'Invoice'}
+                {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.label') : 'Invoice'}
               </a>
               <ul className="dropdown-menu">
                 <li
@@ -562,7 +562,10 @@ export default class SidebarMenu extends React.Component {
                 </li>
               </ul>
             </li>
+            }
 
+            {
+            isSupplier &&
             <li
               className={`dropdown${
             this.state.currentOpenMenuName === 'Company' && ' open' || ''
