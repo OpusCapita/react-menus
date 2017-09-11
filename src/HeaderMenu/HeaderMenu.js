@@ -58,12 +58,18 @@ class HeaderMenu extends React.Component {
 
     const css = (this.state.showHideDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideDropdown": css });
+    if (css === "dropdown open" && this.state.showHideHelpDropdown === "dropdown open") {
+      this.setState({ "showHideHelpDropdown": "dropdown" });
+    }
   }
 
   toggleHelpDropDown(e) {
     e && e.preventDefault && e.preventDefault();
     const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideHelpDropdown": css });
+    if (css === "dropdown open" && this.state.showHideDropdown === "dropdown open") {
+      this.setState({ "showHideDropdown": "dropdown" })
+    }
   }
 
   componentWillMount(){
@@ -159,10 +165,10 @@ class HeaderMenu extends React.Component {
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
                 <li className="divider"></li>
-                <li style={{ paddingLeft: '20px'}}>
-                  +49 231 3967 0
+                <li style={{ paddingLeft: '20px', paddingRight:'20px'}}>
+                  +49 231 3967 350
                 </li>
-                <li style={{ paddingLeft: '20px'}}>
+                <li style={{ paddingLeft: '20px', paddingRight:'20px'}}>
                     customerservice.de@opuscapita.com
                 </li>
                 <li className="divider"></li>
