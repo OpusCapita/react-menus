@@ -8,6 +8,7 @@ services:
      - consul
      - registrator
      - acl
+     - user
     labels:
      SERVICE_NAME: 'menus'
      SERVICE_TAGS: 'external,kong'
@@ -58,17 +59,17 @@ services:
   redis:
     image: 'opuscapita/redis:dev'
     environment:
-      REDIS_AUTH: $REDIS_AUTH
+      REDIS_AUTH: ${REDIS_AUTH}
     depends_on:
       - registrator
     ports:
-      - $REDIS_PORT:$REDIS_PORT
+      - ${REDIS_PORT}:${REDIS_PORT}
 
   acl:
     image: opuscapita/acl:dev
     labels:
-      - 'SERVICE_NAME=acl'
-      - 'SERVICE_TAGS=external,kong'
+      SERVICE_NAME: 'acl'
+      SERVICE_TAGS: 'external,kong'
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -79,4 +80,28 @@ services:
      - '3013:3013'
     depends_on:
       - consul
+    command: 'npm run dev'
+
+  user:
+    image: opuscapita/user:dev
+    depends_on:
+      - mysql
+      - consul
+      - registrator
+    labels:
+      SERVICE_NAME: 'user'
+      SERVICE_TAGS: 'external,kong'
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      REDIS_AUTH: ${REDIS_AUTH}
+      USER_NAME: 'svc_user'
+      PASSWORD: 'test'
+      CLIENT_KEY: ${CLIENT_KEY}
+      CLIENT_SECRET: ${CLIENT_SECRET}
+      SERVICE_3008_CHECK_HTTP: /api/health/check
+      SERVICE_3008_CHECK_INTERVAL: 15s
+      SERVICE_3008_CHECK_TIMEOUT: 3s
+    ports:
+      - '3008:3008'
     command: 'npm run dev'

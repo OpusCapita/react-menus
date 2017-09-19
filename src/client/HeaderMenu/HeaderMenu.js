@@ -7,13 +7,15 @@ import i18n from './i18n';
 class HeaderMenu extends React.Component
 {
     static propTypes = {
-        onLanguageChanged: PropTypes.func,
-        onUserProfileChanged: PropTypes.func
+        onLanguageChanged : PropTypes.func.isRequired,
+        onUserProfileChanged : PropTypes.func.isRequired,
+        logoutRedirectUrl : PropTypes.string.isRequired
     }
 
     static defaultProps = {
-        onLanguageChanged: () => null,
-        onUserProfileChanged: () => null
+        onLanguageChanged : () => null,
+        onUserProfileChanged : () => null,
+        logoutRedirectUrl : '/bnp'
     }
 
     static contextTypes = {
@@ -25,7 +27,6 @@ class HeaderMenu extends React.Component
         super(props);
 
         this.languageDropdown = null;
-        this.showDropdown = false;
 
         this.state = {
             userProfile : null,
@@ -38,16 +39,13 @@ class HeaderMenu extends React.Component
     componentWillReceiveProps(nextProps, nextContext)
     {
         if(this.context.i18n != nextContext.i18n)
-        {
-            this.context.i18n = nextContext.i18n;
-            this.context.i18n.register('HeaderMenu', i18n);
-        }
+            nextContext.i18n.register('HeaderMenu', i18n);
     }
 
     changeLanguage(lang)
     {
         this.props.onLanguageChanged(lang);
-        this.setShowDropdown(false);
+        this.hideDropdown();
     }
 
     loadUserProfile(userId)
@@ -56,16 +54,9 @@ class HeaderMenu extends React.Component
     storeUserProfile(profile)
     {}
 
-    toggleDropDown(e)
+    showDropdown(show)
     {
-        e.preventDefault();
-
-        this.showDropdown = !this.showDropdown;
-        this.setShowDropdown(this.showDropdown);
-    }
-
-    setShowDropdown(show)
-    {
+        show = show === undefined ? true : show;
         const classes = this.languageDropdown.className.split(' ');
         const openIndex = classes.indexOf('open');
 
@@ -77,10 +68,21 @@ class HeaderMenu extends React.Component
         this.languageDropdown.className = classes.join(' ');
     }
 
+    hideDropdown()
+    {
+        this.showDropdown(false);
+    }
+
     componentWillMount()
     {
         if(this.context.i18n)
             this.context.i18n.register('HeaderMenu', i18n);
+    }
+
+    confirmLogout()
+    {
+        if(confirm('Do you really want to logout?'))
+            document.location = '/auth/logout?redirectTo=' + encodeURIComponent(this.props.logoutRedirectUrl);
     }
 
     render()
@@ -98,9 +100,9 @@ class HeaderMenu extends React.Component
                             <span className="glyphicon glyphicon-search" />
                         </button>
                     </form>
-                    <ul className="nav navbar-nav navbar-no-collapse navbar-right">
+                    <ul className="nav navbar-nav navbar-no-collapse navbar-right" onBlur={e => { this.hideDropdown(); e.preventDefault() } }>
                         <li className="dropdown" ref={node => this.languageDropdown = node}>
-                            <a className="dropdown-toggle hidden-sm hidden-xs" onClick={e => this.toggleDropDown(e) } onBlur={e => this.toggleDropDown(e) } data-toggle="dropdown" href="#">
+                            <a className="dropdown-toggle hidden-sm hidden-xs" onClick={e => { this.showDropdown(); e.preventDefault() } } data-toggle="dropdown" href="#">
                                 {this.state.username} <b className="caret" />
                             </a>
                             <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" data-toggle="dropdown" href="#">
@@ -112,12 +114,12 @@ class HeaderMenu extends React.Component
                                 </li>
 
                                 <li>
-                                    <a id="lanugage-de" onClick={() => this.changeLanguage('de') }>
+                                    <a id="lanugage-de" onMouseDown={e => { this.changeLanguage('de'); e.preventDefault() } }>
                                         {i18n.getMessage('HeaderMenu.german')}
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="lanugage-en" onClick={() => this.changeLanguage('en') }>
+                                    <a id="lanugage-en" onMouseDown={e => { this.changeLanguage('en'); e.preventDefault() } }>
                                         {i18n.getMessage('HeaderMenu.english')}
                                     </a>
                                 </li>
@@ -127,7 +129,7 @@ class HeaderMenu extends React.Component
                                 </li>
 
                                 <li>
-                                    <a href="/auth/logout">{i18n.getMessage('HeaderMenu.logout')}</a>
+                                    <a href="#" onMouseDown={e => { this.confirmLogout(); e.preventDefault() } }>{i18n.getMessage('HeaderMenu.logout')}</a>
                                 </li>
                             </ul>
                         </li>
