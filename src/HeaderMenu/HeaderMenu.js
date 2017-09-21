@@ -57,9 +57,23 @@ class HeaderMenu extends React.Component {
     }
   }
 
-  toggleDropDown() {
+  toggleDropDown(e) {
+    e && e.preventDefault && e.preventDefault();
+
     const css = (this.state.showHideDropdown === "dropdown open") ? "dropdown" : "dropdown open";
     this.setState({ "showHideDropdown": css });
+    if (css === "dropdown open" && this.state.showHideHelpDropdown === "dropdown open") {
+      this.setState({ "showHideHelpDropdown": "dropdown" });
+    }
+  }
+
+  toggleHelpDropDown(e) {
+    e && e.preventDefault && e.preventDefault();
+    const css = (this.state.showHideHelpDropdown === "dropdown open") ? "dropdown" : "dropdown open";
+    this.setState({ "showHideHelpDropdown": css });
+    if (css === "dropdown open" && this.state.showHideDropdown === "dropdown open") {
+      this.setState({ "showHideDropdown": "dropdown" })
+    }
   }
 
   toggleHelpDropDown() {
@@ -80,7 +94,7 @@ class HeaderMenu extends React.Component {
         uri = '/blob/public/api/opuscapita/files/public/docs/' + manualName;
     }
     return (
-      <a href={uri}>
+        <a href="#" onClick={ (e) => { e.preventDefault(); window.location.assign(uri); this.toggleHelpDropDown(); } }>
         {this.i18n? this.i18n.getMessage('HeaderMenu.manual') : 'Manual'}
       </a>
     );
@@ -108,7 +122,7 @@ class HeaderMenu extends React.Component {
               <input type="text" className="form-control" placeholder={this.i18n? this.i18n.getMessage('HeaderMenu.search') : 'Search'}/>
             </div>
             <button type="submit" className="btn btn-default">
-              <span className="glyphicon glyphicon-search" />
+              <span className="glyphicon glyphicon-search"></span>
             </button>
           </form>
           <ul className="nav navbar-nav navbar-no-collapse navbar-right">
@@ -120,16 +134,16 @@ class HeaderMenu extends React.Component {
                 href="#"
               >
                 {currentUserData.id}
-                <b className="caret" />
+                <b className="caret"></b>
               </a>
               <a className="dropdown-toggle icon-nav-item visible-sm visible-xs" data-toggle="dropdown" href="#">
-                <span className="glyphicon glyphicon-user" />
+                <span className="glyphicon glyphicon-user"></span>
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
                   {this.i18n? this.i18n.getMessage('HeaderMenu.language') : 'Lanuage'}
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
                   <a id="lanugage-de" onClick={ this.onLanguageChange.bind('German','de') }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.german') : 'German'}
@@ -140,7 +154,7 @@ class HeaderMenu extends React.Component {
                       {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
                   </a>
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
                   <a id="spoof" onClick={ this.onSpoofClick }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.spoofButtonText') : 'Spoof Tenant'}
@@ -168,25 +182,24 @@ class HeaderMenu extends React.Component {
                 data-toggle="dropdown"
                 href="#"
               >
-                ?
-                <b className="caret" />
+                <span className="glyphicon glyphicon-question-sign"></span>
+                <b className="caret"></b>
               </a>
               <ul className="dropdown-menu">
                 <li className="dropdown-header">
                   {this.i18n? this.i18n.getMessage('HeaderMenu.support') : 'Support'}
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                 <li>
-                  {this.i18n? this.i18n.getMessage('HeaderMenu.phone') : 'Phone'}: +49 231 3967 0
+                  {this.i18n? this.i18n.getMessage('HeaderMenu.phone') : 'Phone'}: +49 231 3967 350
                 </li>
                 <li>
                   {this.i18n? this.i18n.getMessage('HeaderMenu.email') : 'Email'}: <a href="mailto:customerservice.de@opuscapita.com">customerservice.de@opuscapita.com</a>
                 </li>
-                <li className="divider" />
+                <li className="divider"></li>
                   {this.renderManualLink()}
               </ul>
             </li>
-
           </ul>
         </div>
       </div>

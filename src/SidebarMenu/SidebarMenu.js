@@ -105,9 +105,10 @@ export default class SidebarMenu extends React.Component {
     var linkIsRelative = linkBasePathIndex === 0;
 
     if(linkIsRelative) {
-      this.context.router.push(link.substr(currentBasePath.length) || '/');
+      var newPath = link.substr(currentBasePath.length) || '/'
+      this.context.router.push(newPath);
     } else {
-      window.location = link;
+        window.location = link;
     }
   }
 
@@ -520,6 +521,47 @@ export default class SidebarMenu extends React.Component {
                   </li>
                 </ul>
               </li>
+            }
+
+            {
+            isSupplier &&
+            <li
+              className={`dropdown${
+                this.state.currentOpenMenuName === 'Invoice' && ' open' || ''
+              }${
+                this.state.activeMainMenuName === 'Invoice' && ' active' || ''
+              }`}
+            >
+              <a
+                href="#"
+                className="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onClick={this.mainMenuWithSubmenuClick.bind(this, 'Invoice')}
+              >
+                <span className="oci oci-invoice" />
+                {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.label') : 'Invoice'}
+              </a>
+              <ul className="dropdown-menu">
+                <li
+                  className={`${
+                    this.state.activeMainMenuName === 'Invoice' &&
+                    this.state.activeSubMenuName === 'ServiceConfig' &&
+                    ' active' ||
+                    ''
+                  }`}
+                >
+                  <a
+                    href="/einvoice-send"
+                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send', 'Invoice', 'ServiceConfig')}
+                  >
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.serviceConfiguration') : 'Service Configuration'}
+                  </a>
+                </li>
+              </ul>
+            </li>
             }
 
             {

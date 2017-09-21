@@ -5,6 +5,11 @@ export default {
 		german: 'German',
 		english: 'English',
 		logout: 'Logout',
-		spoofButtonText: 'Change Tenant'
+		spoofButtonText: 'Change Tenant',
+        support: 'Support',
+        email: 'Email',
+        phone: 'Phone',
+        manual: 'Manual',
+        manualName: 'SupplierManual.pdf'
 	}
 }

@@ -21,6 +21,7 @@ let invoice = {};
 invoice.label = 'Rechnungen';
 invoice.inspect = 'Liste';
 invoice.createNew = 'Erstellen';
+invoice.serviceConfiguration = 'Service Konfiguration';
 
 let orders = {};
 orders.label = 'Bestellungen';

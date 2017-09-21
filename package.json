@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-menus",
-  "version": "1.0.3",
+  "version": "1.0.27",
   "description": "OpusCapita React components",
   "main": "lib/ocbesbn-react-components.js",
   "module": "lib/ocbesbn-react-components.js",
@@ -51,6 +51,7 @@
     "babel-preset-stage-0": "6.24.1",
     "babel-register": "6.24.1",
     "babelrc-rollup": "3.0.0",
+    "bluebird": "^3.5.0",
     "enzyme": "2.8.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
@@ -70,8 +71,7 @@
     "rollup-plugin-url": "1.1.0",
     "rollup-watch": "3.2.2",
     "superagent": "^3.6.0",
-    "superagent-bluebird-promise": "^4.2.0",
-    "bluebird": "^3.5.0",
+    "superagent-bluebird-promise": "^4.2.0"
   },
   "dependencies": {
     "react": "15.4.2",
