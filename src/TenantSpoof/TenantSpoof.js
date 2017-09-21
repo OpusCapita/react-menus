@@ -38,7 +38,11 @@ export default class TenantSpoof extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps, nextContext) {
+    if(this.i18n && nextContext.i18n.locale != this.i18n.locale) {
+      this.i18n = nextContext.i18n.register('TenantSpoof', locales);
+    }
+    
     this.setState({
       show: nextProps.show,
       customerId: nextProps.currentUserData && nextProps.currentUserData.customerid ? nextProps.currentUserData.customerid : '',
