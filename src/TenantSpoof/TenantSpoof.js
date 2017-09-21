@@ -59,9 +59,7 @@ export default class TenantSpoof extends React.Component {
     let state = this.state;
     state[name] = e.target.value;
 
-    this.setState({
-      ...state
-    });
+    this.setState(state);
   }
 
   unsetTenant = () => {

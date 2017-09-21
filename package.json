@@ -2,13 +2,11 @@
   "name": "@opuscapita/react-menus",
   "version": "1.0.27",
   "description": "OpusCapita React components",
-  "main": "lib/ocbesbn-react-components.js",
-  "module": "lib/ocbesbn-react-components.js",
-  "jsnext:main": "lib/ocbesbn-react-components.js",
+  "main": "ocbesbn-react-components.js",
+  "module": "ocbesbn-react-components.js",
   "scripts": {
     "prebuild": "rimraf lib",
-    "build": "rollup -c",
-    "watch": "rollup -c -w",
+    "build": "./node_modules/webpack/bin/webpack.js  -p --config webpack.config.js",
     "lint": "eslint src",
     "pretest": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -58,25 +56,20 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
+    "file-loader": "^0.11.2",
     "in-publish": "2.0.0",
     "istanbul": "0.4.5",
     "react": "15.4.2",
     "release-it": "2.7.1",
     "rimraf": "2.6.1",
-    "rollup": "0.41.6",
-    "rollup-plugin-babel": "2.7.1",
-    "rollup-plugin-commonjs": "8.0.2",
-    "rollup-plugin-istanbul": "1.1.0",
-    "rollup-plugin-node-resolve": "3.0.0",
-    "rollup-plugin-url": "1.1.0",
-    "rollup-watch": "3.2.2",
-    "superagent": "^3.6.0",
-    "superagent-bluebird-promise": "^4.2.0"
+    "webpack": "^3.6.0"
   },
   "dependencies": {
     "react": "15.4.2",
     "react-bootstrap": "0.31.0",
     "react-dom": "15.4.2",
-    "react-router": "3.0.5"
+    "react-router": "3.0.5",
+    "superagent": "^3.6.0",
+    "superagent-bluebird-promise": "^4.2.0"
   }
 }
