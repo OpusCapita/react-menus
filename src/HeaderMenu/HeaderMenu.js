@@ -87,9 +87,8 @@ class HeaderMenu extends React.Component {
   }
 
   onSpoofClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     this.setState({showTenantSpoof: true});
+    this.toggleDropDown();
   }
 
   onSpoofWindowClose = () => {

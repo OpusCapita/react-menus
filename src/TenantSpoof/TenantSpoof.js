@@ -99,6 +99,14 @@ export default class TenantSpoof extends React.Component {
     window.location.reload(); //#TODO temporary, need to find a way
   }
 
+  renderInfo = () => {
+    return (
+      <div className="alert alert-info">
+        {this.i18n.getMessage('TenantSpoof.message')}
+      </div>
+    )
+  }
+
   render() {
     return (
       <Modal show={this.state.show}>
@@ -126,7 +134,7 @@ export default class TenantSpoof extends React.Component {
               />
             </FormGroup>
             <FormGroup>
-              {this.state.updating ? this.i18n.getMessage('TenantSpoof.message') : ''}
+              {this.state.updating ? this.renderInfo() : ''}
             </FormGroup>
           </form>
         </Modal.Body>
