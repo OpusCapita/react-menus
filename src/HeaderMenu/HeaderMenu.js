@@ -1,5 +1,6 @@
 import React from 'react';
 import locales from './i18n';
+import TenantSpoof from '../TenantSpoof';
 
 class HeaderMenu extends React.Component {
   static propTypes = {
@@ -27,7 +28,8 @@ class HeaderMenu extends React.Component {
       showHideHelpDropdown: "dropdown",
       activeMainMenuName: this.props.activeMainMenuName,
       activeSubMenuName: this.props.activeSubMenuName,
-      activeLanguage: 'English'
+      activeLanguage: 'English',
+      showTenantSpoof: false
     };
     let i18n;
   }
@@ -84,6 +86,15 @@ class HeaderMenu extends React.Component {
     );
   }
 
+  onSpoofClick = (e) => {
+    this.setState({showTenantSpoof: true});
+    this.toggleDropDown();
+  }
+
+  onSpoofWindowClose = () => {
+    this.setState({showTenantSpoof: false});
+  }
+
   render() {
     const { showHideDropdown, showHideHelpDropdown } = this.state;
     const { currentUserData } = this.props;
@@ -92,6 +103,7 @@ class HeaderMenu extends React.Component {
       <div className="navbar navbar-default navbar-main-menu" style={{ paddingRight: '25px' }}>
         <div className="navbar-header pull-right">
           <form className="navbar-form navbar-right">
+            <TenantSpoof onSpoofWindowClose={this.onSpoofWindowClose} currentUserData={this.props.currentUserData} show={this.state.showTenantSpoof} />
             <div className="form-group">
               <input type="text" className="form-control" placeholder={this.i18n? this.i18n.getMessage('HeaderMenu.search') : 'Search'}/>
             </div>
@@ -126,6 +138,12 @@ class HeaderMenu extends React.Component {
                 <li>
                   <a id="lanugage-en" onClick={ this.onLanguageChange.bind('English','en') }>
                       {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
+                  </a>
+                </li>
+                <li className="divider" />
+                <li>
+                  <a id="spoof" onClick={ this.onSpoofClick }>
+                      {this.i18n? this.i18n.getMessage('HeaderMenu.spoofButtonText') : 'Spoof Tenant'}
                   </a>
                 </li>
                 <li className="divider" />
