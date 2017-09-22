@@ -3,7 +3,7 @@
   "version": "1.0.27",
   "description": "OpusCapita React components",
   "main": "lib/ocbesbn-react-components.js",
-  "module": "lib/reocbesbn-react-components.js",
+  "module": "reocbesbn-react-components.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "./node_modules/webpack/bin/webpack.js  -p --config webpack.config.js",
