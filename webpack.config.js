@@ -5,7 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/lib'),
-    filename: pkg.module
+    filename: pkg.module,
+    libraryTarget: "umd"
   },
   devtool: 'source-map',
   module: {
