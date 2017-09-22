@@ -6,10 +6,10 @@ export default {
 		english: 'Englisch',
 		logout: 'Ausloggen',
 		spoofButtonText: 'Change Tenant',
-        support: 'Support',
-        email: 'E-Mail',
-        phone: 'Tel.',
-        manual: 'Dokumentation',
-        manualName: 'Lieferantenhandbuch.pdf'
+    support: 'Support',
+    email: 'E-Mail',
+    phone: 'Tel.',
+    manual: 'Dokumentation',
+    manualName: 'Lieferantenhandbuch.pdf'
 	}
 }

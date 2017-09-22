@@ -154,12 +154,18 @@ class HeaderMenu extends React.Component {
                       {this.i18n? this.i18n.getMessage('HeaderMenu.english') : 'English'}
                   </a>
                 </li>
-                <li className="divider"></li>
-                <li>
-                  <a id="spoof" onClick={ this.onSpoofClick }>
-                      {this.i18n? this.i18n.getMessage('HeaderMenu.spoofButtonText') : 'Spoof Tenant'}
-                  </a>
-                </li>
+                {
+                  currentUserData && currentUserData.roles.indexOf('admin') > -1 ?
+                  <li className="divider" /> : ''
+                }
+                {
+                  currentUserData && currentUserData.roles.indexOf('admin') > -1 ?
+                  <li>
+                    <a id="spoof" onClick={ this.onSpoofClick }>
+                        {this.i18n? this.i18n.getMessage('HeaderMenu.spoofButtonText') : 'Spoof Tenant'}
+                    </a>
+                  </li> : ''
+                }
                 <li className="divider" />
                 <li>
                   <a className="hidden" href="#">Change Assignment</a>
