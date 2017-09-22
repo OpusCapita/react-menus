@@ -4,7 +4,7 @@ const pkg = require('./package.json');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.join(__dirname, '/lib'),
+    path: path.join(__dirname),
     filename: pkg.module
   },
   devtool: 'source-map',
