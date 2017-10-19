@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-menus",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "OpusCapita React components",
   "main": "lib/ocbesbn-react-components.js",
   "module": "ocbesbn-react-components.js",
