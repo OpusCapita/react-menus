@@ -570,7 +570,7 @@ export default class SidebarMenu extends React.Component {
                 >
                   <a
                     href="/einvoice-send"
-                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send/#/key-in', 'Invoice', 'KeyIn')}
+                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send/key-in', 'Invoice', 'KeyIn')}
                   >
                     {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.keyIn') : 'Invoice Key-In'}
                   </a>
