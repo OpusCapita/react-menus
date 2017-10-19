@@ -22,6 +22,7 @@ invoice.label = 'Rechnungen';
 invoice.inspect = 'Liste';
 invoice.createNew = 'Erstellen';
 invoice.serviceConfiguration = 'Service Konfiguration';
+invoice.keyIn = 'Rechnungserfassung / Key-In';
 
 let orders = {};
 orders.label = 'Bestellungen';
