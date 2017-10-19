@@ -560,6 +560,21 @@ export default class SidebarMenu extends React.Component {
                     {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.serviceConfiguration') : 'Service Configuration'}
                   </a>
                 </li>
+                <li
+                  className={`${
+                    this.state.activeMainMenuName === 'Invoice' &&
+                    this.state.activeSubMenuName === 'KeyIn' &&
+                    ' active' ||
+                    ''
+                  }`}
+                >
+                  <a
+                    href="/einvoice-send"
+                    onClick={this.handleMenuItemClick.bind(this, '/einvoice-send/#/key-in', 'Invoice', 'KeyIn')}
+                  >
+                    {this.i18n? this.i18n.getMessage('SidebarMenu.invoice.keyIn') : 'Invoice Key-In'}
+                  </a>
+                </li>
               </ul>
             </li>
             }
